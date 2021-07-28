@@ -4,7 +4,8 @@
   "description": "An online task management app. Built to help creatives stay organized in their usually frenzied daily schedule",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,9 +19,11 @@
   "homepage": "https://github.com/Moreneecoder/task-hero#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "css-loader": "^6.2.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
+    "style-loader": "^3.2.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",

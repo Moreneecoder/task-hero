@@ -1,0 +1,19 @@
+{
+  "name": "task-hero",
+  "version": "1.0.0",
+  "description": "An online task management app. Built to help creatives stay organized in their usually frenzied daily schedule",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moreneecoder/task-hero.git"
+  },
+  "author": "Bello Morenikeji Fuad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Moreneecoder/task-hero/issues"
+  },
+  "homepage": "https://github.com/Moreneecoder/task-hero#readme"
+}

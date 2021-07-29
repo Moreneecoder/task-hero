@@ -3,17 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
 import navComponent from './components/nav';
+import * as domActions from './utils/domActions';
 
 document.addEventListener('DOMContentLoaded', () => {
     document.body.prepend(navComponent());
   
-    // const mainContent = document.getElementById('content');
+    const mainContent = document.getElementById('content');
     // mainContent.classList.add('container-fluid', 'pb-5', 'pt-5');
     // mainContent.appendChild(homeComponent());
   
     // document.body.appendChild(footerComponent());
   
-    // document.addEventListener('click', (e) => {
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'app-link'){
+            domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
+            // domActions.addTabContent(mainContent, 'menu-wrapper', menuComponent());
+        }
     //   if (e.target && e.target.id === 'menu') {
     //     domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
     //     domActions.addTabContent(mainContent, 'menu-wrapper', menuComponent());
@@ -28,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     domActions.removeChildWithinParent(mainContent, ['menu-wrapper', 'home-wrapper']);
     //     domActions.addTabContent(mainContent, 'contact-wrapper', contactComponent());
     //   }
-    // });
+    });
   });
  
 //   document.body.appendChild(component());

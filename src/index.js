@@ -4,7 +4,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
 import navComponent from './components/nav';
 import homeComponent from './components/home';
-import appComponent from './components/app';
+import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
 
 document.addEventListener('DOMContentLoaded', () => {

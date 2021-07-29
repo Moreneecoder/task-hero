@@ -1,8 +1,8 @@
 const appComponent = () => {
-    const appWrapper = document.createElement('div');
+    const appWrapper = document.createElement('section');
     appWrapper.id = 'app-wrapper';
       
-    appWrapper.innerHTML = `This is the app component`;  
+    appWrapper.innerHTML = ``;  
     return appWrapper;
 }
 

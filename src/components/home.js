@@ -9,9 +9,8 @@ const homeComponent = () => {
     const homeWrapper = document.createElement('div');
     homeWrapper.id = 'home-wrapper';
       
-        homeWrapper.innerHTML = homeHtml;
-      
-        return homeWrapper; 
+    homeWrapper.innerHTML = homeHtml;  
+    return homeWrapper; 
     };
       
     export default homeComponent;

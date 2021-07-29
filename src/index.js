@@ -4,6 +4,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
 import navComponent from './components/nav';
 import homeComponent from './components/home';
+import appComponent from './components/app';
 import * as domActions from './utils/domActions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -16,11 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         if (e.target && e.target.id === 'app'){
             domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
-            // domActions.addTabContent(mainContent, 'menu-wrapper', menuComponent());
+            domActions.addTabContent(mainContent, 'app-wrapper', appComponent());
         }
 
         if (e.target && e.target.id === 'home'){
-            // domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
+            domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'contact-wrapper']);
             domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
         }
 

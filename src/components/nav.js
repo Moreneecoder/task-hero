@@ -1,5 +1,5 @@
 const navComponent = () => {
-    const navbarHtml = `<div class="container-fluid">
+  const navbarHtml = `<div class="container-fluid">
     <a class="navbar-brand" href="#">taskHero</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -34,13 +34,13 @@ const navComponent = () => {
       </form>
     </div>
   </div>`;
-  
-    const navBar = document.createElement('nav');
-    navBar.classList.add(...['navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light', 'fixed-top']);
-  
-    navBar.innerHTML = navbarHtml;
-  
-    return navBar;
-  };
-  
-  export default navComponent;
+
+  const navBar = document.createElement('nav');
+  navBar.classList.add(...['navbar', 'navbar-expand-lg', 'navbar-light', 'bg-light', 'fixed-top']);
+
+  navBar.innerHTML = navbarHtml;
+
+  return navBar;
+};
+
+export default navComponent;

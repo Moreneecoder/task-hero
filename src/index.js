@@ -6,6 +6,7 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
+import 'bootstrap/js/dist/modal';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());

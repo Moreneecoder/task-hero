@@ -22,7 +22,7 @@ const appSkeleton = () => {
       </div>
       <div class="col-md-9">
           <h3 class="float-start">${projectList[0].name}</h3>
-          <button class="btn btn-primary float-end">New Task</button>
+          <button class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#new-task-modal">New Task</button>
 
           <div style="clear: both;"></div>
           

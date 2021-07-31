@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.appendChild(homeComponent());
   // document.body.appendChild(footerComponent());
 
-  localStorage.removeItem('projects')
+  localStorage.removeItem('projects');
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {

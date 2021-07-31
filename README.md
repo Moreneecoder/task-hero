@@ -19,7 +19,7 @@
 * Webpack 5
 
 ## Live Demo
-* [taskHero](https://moreneecoder.github.io/restaurant-page/)
+* [taskHero](https://moreneecoder.github.io/task-hero/)
 
 ## Getting Started
 To setup a local version of this project on your machine, follow the short simple steps below and you'll be all set in no time.

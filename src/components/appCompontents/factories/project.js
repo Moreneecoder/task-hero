@@ -2,7 +2,16 @@ const getProjects = () => {
     if(! localStorage.getItem('projects')){
         let projects = [
             {
-                "name": 'Welcome'
+                "name": 'Welcome',
+                "todos": [
+                    {
+                        "title": 'Start Here',
+                        "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!",
+                        "dueDate": "Aug 5, 2021",
+                        "priority": "Low",
+                        "Done": false
+                    }
+                ]
             },
             {
                 "name": 'Study'

@@ -6,7 +6,6 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import * as Projects from './components/appCompontents/factories/project'
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
@@ -14,9 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById('content');
   mainContent.appendChild(homeComponent());
   // document.body.appendChild(footerComponent());
-  
-//   localStorage.removeItem('projects')
-  console.log(Projects.getProjects());
+
+  localStorage.removeItem('projects')
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {

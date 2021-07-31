@@ -1,3 +1,14 @@
+import * as Projects from './factories/project'
+
+const loadProjects = (projects) => {
+    let list = ``
+    projects.forEach((project) => {
+        list += (`<hr><p>${project.name}</p>`)
+    });
+
+    return list
+}
+
 const appSkeleton = () => {
     return `
     <div class="row px-3">
@@ -5,12 +16,7 @@ const appSkeleton = () => {
           <h5 class="mb-0">PROJECTS</h5>
           
           <div class="project-list">
-              <hr>
-              <p>Welcome</p>
-              <hr>
-              <p>School</p>
-              <hr>
-              <p>Welcome</p>
+              ${loadProjects(Projects.getProjects())}
           </div>
       </div>
       <div class="col-md-9">

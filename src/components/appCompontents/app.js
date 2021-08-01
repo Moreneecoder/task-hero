@@ -1,8 +1,8 @@
-import * as Projects from './factories/project';
+import { getProjects } from './factories/project';
 import { loadAsHtml } from '../../utils/domActions';
 
 const appSkeleton = () => {
-  const projectList = Projects.getProjects();
+  const projectList = getProjects();
 
   return `
     <div class="row px-3">

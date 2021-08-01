@@ -1,15 +1,6 @@
-import * as Projects from './project';
+import { getProjects, projectExists } from './project';
 
-const projectList = Projects.getProjects();
-
-const projectExists = (task, prjs) => {
-  const matchingProj = prjs.filter((prj) => prj.name.toLowerCase() === task.project.toLowerCase());
-  if (matchingProj.length > 0) {
-    return true;
-  }
-
-  return false;
-};
+const projectList = getProjects();
 
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage

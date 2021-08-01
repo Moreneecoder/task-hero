@@ -25,6 +25,15 @@ const getProjects = () => {
   return JSON.parse(localStorage.getItem('projects'));
 };
 
+const projectExists = (task, prjs) => {
+    const matchingProj = prjs.filter((prj) => prj.name.toLowerCase() === task.project.toLowerCase());
+    if (matchingProj.length > 0) {
+      return true;
+    }
+  
+    return false;
+};
+
 // Array.prototype.loadAsHtml = function (callback) {
 //   let list = '';
 //   this.forEach((obj) => {
@@ -40,4 +49,4 @@ const Project = (name) => {
 
 // Project.prototype.success = () => `Project ${this.name} successfully created`;
 
-export { getProjects, Project };
+export { getProjects, projectExists, Project };

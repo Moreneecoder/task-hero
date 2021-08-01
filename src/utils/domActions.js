@@ -15,12 +15,12 @@ const addTabContent = (parent, child, component) => {
 };
 
 const loadAsHtml = (projects, callback) => {
-    let list = '';
-    projects.forEach((obj) => {
-      list += (callback(obj));
-    });
-  
-    return list;
+  let list = '';
+  projects.forEach((obj) => {
+    list += (callback(obj));
+  });
+
+  return list;
 };
 
 export { removeChildWithinParent, addTabContent, loadAsHtml };

@@ -2,7 +2,7 @@ import * as Projects from './factories/project';
 
 const appSkeleton = () => {
   const projectList = Projects.getProjects();
-    console.log(projectList[0].todos);
+    
   return `
     <div class="row px-3">
       <div class="col-md-3 card alert alert-success">
@@ -36,6 +36,7 @@ const appSkeleton = () => {
 
       </div>
     </div> `;
+    
 };
 
 const appComponent = () => {

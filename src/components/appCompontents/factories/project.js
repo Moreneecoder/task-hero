@@ -15,6 +15,7 @@ const getProjects = () => {
       },
       {
         name: 'Study',
+        todos:[]
       },
     ];
 

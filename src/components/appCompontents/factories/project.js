@@ -24,10 +24,10 @@ const getProjects = () => {
   return JSON.parse(localStorage.getItem('projects'));
 };
 
-Array.prototype.loadProjects = function(callback){
+Array.prototype.loadAsHtml = function(callback){
     let list = '';
-    this.forEach((project) => {
-      list += (callback(project.name));
+    this.forEach((obj) => {
+      list += (callback(obj));
     });
   
     return list;

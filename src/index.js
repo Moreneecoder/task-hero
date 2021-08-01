@@ -2,11 +2,13 @@ import './style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/modal';
 import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import 'bootstrap/js/dist/modal';
+import { createNewTask } from './components/appCompontents/factories/task'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
@@ -39,10 +41,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const desc = document.querySelector('#desc').value;
       const dueDate = document.querySelector('#date').value;
       const priority = document.querySelector('#priority').value;
+      const project = document.querySelector('#project').value
 
-      console.log({title, desc, dueDate, priority});
+      createNewTask({title, desc, dueDate, priority, project});
 
-      alert('New Task Submitted!')
   })
 
 });

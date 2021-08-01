@@ -20,7 +20,37 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <p>Modal form goes goes here.</p>
+              
+                <form id="new-task-form">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Task Title</label>
+                      <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp">                      
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="desc" class="form-label">Description</label>
+                      <textarea name="desc" class="form-control" id="desc" cols="30" rows="5"></textarea>                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Due Date</label>
+                        <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp">                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Priority</label>
+
+                        <select name="priority" id="priority" class="form-control" aria-describedby="priorityHelp">
+                            <option value="1">High</option>
+                            <option value="2">Medium</option>
+                            <option value="3">Low</option>
+                        </select>
+                        <div id="priorityHelp" class="form-text">Tasks will be colored according to priority. Red for high. Blue for medium. Green for low.</div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.target && e.target.id === 'home') {
       domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'contact-wrapper']);
-      domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
+      domActions.addTabContent(mainContent, 'home-wrapper', homeComponent())
     }
 
     //   if (e.target && e.target.id === 'menu') {

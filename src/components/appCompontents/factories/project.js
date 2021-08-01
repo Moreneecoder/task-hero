@@ -15,7 +15,7 @@ const getProjects = () => {
       },
       {
         name: 'Study',
-        todos:[]
+        todos: [],
       },
     ];
 
@@ -25,14 +25,14 @@ const getProjects = () => {
   return JSON.parse(localStorage.getItem('projects'));
 };
 
-Array.prototype.loadAsHtml = function(callback){
-    let list = '';
-    this.forEach((obj) => {
-      list += (callback(obj));
-    });
-  
-    return list;
-};
+// Array.prototype.loadAsHtml = function (callback) {
+//   let list = '';
+//   this.forEach((obj) => {
+//     list += (callback(obj));
+//   });
+
+//   return list;
+// };
 
 const Project = (name) => {
   this.name = name;

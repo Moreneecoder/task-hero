@@ -7,8 +7,7 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import { createNewTask } from './components/appCompontents/factories/task'
-
+import createNewTask from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.appendChild(homeComponent());
   // document.body.appendChild(footerComponent());
 
-//   localStorage.removeItem('projects');
+  //   localStorage.removeItem('projects');
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
@@ -27,25 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.target && e.target.id === 'home') {
       domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'contact-wrapper']);
-      domActions.addTabContent(mainContent, 'home-wrapper', homeComponent())
+      domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
     }
-
   });
 
-  const form = document.querySelector('#new-task-form')
+  const form = document.querySelector('#new-task-form');
 
-  form.addEventListener('submit', e => {
-      e.preventDefault()
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-      const title = document.querySelector('#title').value;
-      const desc = document.querySelector('#desc').value;
-      const dueDate = document.querySelector('#date').value;
-      const priority = document.querySelector('#priority').value;
-      const project = document.querySelector('#project').value
+    const title = document.querySelector('#title').value;
+    const desc = document.querySelector('#desc').value;
+    const dueDate = document.querySelector('#date').value;
+    const priority = document.querySelector('#priority').value;
+    const project = document.querySelector('#project').value;
 
-      createNewTask({title, desc, dueDate, priority, project});
-
-  })
-
+    createNewTask({
+      title, desc, dueDate, priority, project,
+    });
+  });
 });
-

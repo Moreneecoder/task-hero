@@ -14,4 +14,13 @@ const addTabContent = (parent, child, component) => {
   }
 };
 
-export { removeChildWithinParent, addTabContent };
+const loadAsHtml = (projects, callback) => {
+    let list = '';
+    projects.forEach((obj) => {
+      list += (callback(obj));
+    });
+  
+    return list;
+};
+
+export { removeChildWithinParent, addTabContent, loadAsHtml };

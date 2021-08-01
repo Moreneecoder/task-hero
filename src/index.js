@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.appendChild(homeComponent());
   // document.body.appendChild(footerComponent());
 
-  localStorage.removeItem('projects');
+//   localStorage.removeItem('projects');
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
@@ -28,21 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
       domActions.addTabContent(mainContent, 'home-wrapper', homeComponent())
     }
 
-    //   if (e.target && e.target.id === 'menu') {
-    //     domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
-    //     domActions.addTabContent(mainContent, 'menu-wrapper', menuComponent());
-    //   }
-
-    //   if (e.target && e.target.id === 'home') {
-    //     domActions.removeChildWithinParent(mainContent, ['menu-wrapper', 'contact-wrapper']);
-    //     domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
-    //   }
-
-    //   if (e.target && e.target.id === 'contact') {
-    //     domActions.removeChildWithinParent(mainContent, ['menu-wrapper', 'home-wrapper']);
-    //     domActions.addTabContent(mainContent, 'contact-wrapper', contactComponent());
-    //   }
   });
+
+  const form = document.querySelector('#new-task-form')
+
+  form.addEventListener('submit', e => {
+      e.preventDefault()
+
+      const title = document.querySelector('#title').value;
+      const desc = document.querySelector('#desc').value;
+      const dueDate = document.querySelector('#date').value;
+      const priority = document.querySelector('#priority').value;
+
+      console.log({title, desc, dueDate, priority});
+
+      alert('New Task Submitted!')
+  })
+
 });
 
-//   document.body.appendChild(component());

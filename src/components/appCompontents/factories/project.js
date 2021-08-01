@@ -24,6 +24,15 @@ const getProjects = () => {
   return JSON.parse(localStorage.getItem('projects'));
 };
 
+Array.prototype.loadProjects = function(callback){
+    let list = '';
+    this.forEach((project) => {
+      list += (callback(project.name));
+    });
+  
+    return list;
+};
+
 const Project = (name) => {
   this.name = name;
 };

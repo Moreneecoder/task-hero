@@ -24,7 +24,7 @@
                 <form id="new-task-form">
                     <div class="mb-3">
                       <label for="title" class="form-label">Task Title</label>
-                      <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp">                      
+                      <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp" required>                      
                     </div>
 
                     <div class="mb-3">
@@ -34,28 +34,42 @@
 
                     <div class="mb-3">
                         <label for="date" class="form-label">Due Date</label>
-                        <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp">                      
+                        <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp" required>                      
                     </div>
 
                     <div class="mb-3">
                         <label for="date" class="form-label">Priority</label>
 
-                        <select name="priority" id="priority" class="form-control" aria-describedby="priorityHelp">
+                        <select name="priority" id="priority" class="form-control" aria-describedby="priorityHelp" required>
                             <option value="1">High</option>
                             <option value="2">Medium</option>
                             <option value="3">Low</option>
                         </select>
                         <div id="priorityHelp" class="form-text">Tasks will be colored according to priority. Red for high. Blue for medium. Green for low.</div>
                     </div>
+
+                    <div class="mb-3" id="projects-label">
+                        <label for="date" class="form-label">Project</label>
+
+                        <select name="project" id="project" class="form-control" aria-describedby="projectHelp" required>
+                            <option value="welcome">Welcome</option>
+                            <option value="study">Study</option>                            
+                        </select>                        
+                    </div>
+
+                    <div class="mb-3">
+                        <div id="newProjectHelp" class="form-text">If you want to sort this task into an entirely new project folder, you can easily do so here.</div>
+                        <div class="d-flex justify-content-between">
+                            <input type="text" name="new-proj" class="form-control me-2" id="new-proj" aria-describedby="newProjectHelpHelp" placeholder="Create New Project">
+                            <button type="button" id="new-proj-btn" class="btn btn-success ml-1">Create</button>
+                        </div>                        
+                    </div>
                     
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
                 </form>
                 
             </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Add</button>
-            </div>
+            
           </div>
         </div>
       </div>

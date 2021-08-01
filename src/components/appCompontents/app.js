@@ -1,23 +1,15 @@
 import * as Projects from './factories/project';
 
-const loadProjects = (projects) => {
-  let list = '';
-  projects.forEach((project) => {
-    list += (`<hr><p>${project.name}</p>`);
-  });
-
-  return list;
-};
-
 const appSkeleton = () => {
   const projectList = Projects.getProjects();
+
   return `
     <div class="row px-3">
       <div class="col-md-3 card alert alert-success">
           <h5 class="mb-0">PROJECTS</h5>
           
           <div class="project-list">
-              ${loadProjects(projectList)}
+              ${projectList.loadProjects(project => `<hr><p>${project}</p>` )}
           </div>
       </div>
       <div class="col-md-9">

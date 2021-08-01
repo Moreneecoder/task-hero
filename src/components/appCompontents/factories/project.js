@@ -26,12 +26,12 @@ const getProjects = () => {
 };
 
 const projectExists = (task, prjs) => {
-    const matchingProj = prjs.filter((prj) => prj.name.toLowerCase() === task.project.toLowerCase());
-    if (matchingProj.length > 0) {
-      return true;
-    }
-  
-    return false;
+  const matchingProj = prjs.filter((prj) => prj.name.toLowerCase() === task.project.toLowerCase());
+  if (matchingProj.length > 0) {
+    return true;
+  }
+
+  return false;
 };
 
 // Array.prototype.loadAsHtml = function (callback) {

@@ -1,5 +1,6 @@
 import { getProjects } from './factories/project';
 import { loadAsHtml } from '../../utils/domActions';
+import { taskHtml } from './factories/task';
 
 const appSkeleton = () => {
   const projectList = getProjects();
@@ -19,19 +20,7 @@ const appSkeleton = () => {
 
           <div style="clear: both;"></div>
           
-          ${loadAsHtml(projectList[0].todos, (todo) => `<div class="row mt-3 mx-2">
-                <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
-                <input type="checkbox" name="" id="">
-                <p class="m-0">${todo.title}</p>
-                <p class="m-0">${todo.dueDate}</p>
-                <p class="m-0 text-primary">${todo.priority}</p>
-
-                <div class="ml-auto">                    
-                    <button class="btn btn-warning text-white">Edit</button>
-                    <button class="btn btn-danger">Delete</button>
-                </div>
-                </div>
-             </div>`)}
+          ${loadAsHtml(projectList[0].todos, (todo) => taskHtml(todo))}
 
       </div>
     </div> `;

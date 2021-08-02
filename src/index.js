@@ -7,7 +7,7 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import createNewTask from './components/appCompontents/factories/task';
+import { createNewTask } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());

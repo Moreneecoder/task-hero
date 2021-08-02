@@ -22,19 +22,23 @@ const projectList = getProjects();
 
 const storeTask = (task, projects) => {
   projects.forEach((project) => {
-    if (project.name.toLowerCase() === task.project.toLowerCase()) {
+    if (project.name.toLowerCase() === task.project.toLowerCase()) {      
+        console.log(project.todos.length);
+      task['id'] = project.todos.length
       project.todos.push(task);
     }
   });
 
   saveProjects(projects);
+  return task;
 };
 
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage
   if (projectExists(taskObj, projects)) {
       // if yes, store new task in corresponding project
-    storeTask(taskObj, projects);
+    const savedTask = storeTask(taskObj, projects);
+    console.log(savedTask);
   }
   else{
     // if no, create project and store new task in it
@@ -43,9 +47,13 @@ const createNewTask = (taskObj, projects = projectList) => {
   }
 
 
-  // load and display project task
+  // load and display project tasks
   let taskList = document.querySelector('#task-list');
-  taskList.innerHTML = loadAsHtml(projectList[projectList.length - 1].todos, (todo) => taskHtml(todo))
+  const projectIdx = projects.findIndex(project => project.name.toLowerCase() === taskObj.project.toLowerCase());
+  taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo))
+
+  let header = document.querySelector('#project-title')
+  header.textContent = projectList[projectIdx].name
 
 };
 

@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const mainContent = document.getElementById('content');
   mainContent.appendChild(homeComponent());
-  
-    // localStorage.removeItem('projects');
+
+  // localStorage.removeItem('projects');
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
       domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
     }
 
-    if(e.target && e.target.classList.contains('projects')){
-        domActions.makeActive(e.target)
+    if (e.target && e.target.classList.contains('projects')) {
+      domActions.makeActive(e.target);
     }
     // console.log(e.target.classList.contains('projects'));
   });

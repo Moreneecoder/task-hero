@@ -1,15 +1,12 @@
 import { getProjects } from './factories/project';
-import { loadAsHtml } from '../../utils/domActions';
+import { loadAsHtml, makeActive } from '../../utils/domActions';
 import { taskHtml } from './factories/task';
-import { makeActive } from '../../utils/domActions';
 
 // Dynamically add options to project select for new task form
-  const projectSelect = document.querySelector('#project')
-  const projectsHtml = loadAsHtml(getProjects(), (project) => {
-      return `<option value="${project.name}">${project.name}</option>`
-  });
-  
-  projectSelect.innerHTML = projectsHtml
+const projectSelect = document.querySelector('#project');
+const projectsHtml = loadAsHtml(getProjects(), (project) => `<option value="${project.name}">${project.name}</option>`);
+
+projectSelect.innerHTML = projectsHtml;
 
 const appSkeleton = () => {
   const projectList = getProjects();
@@ -20,7 +17,7 @@ const appSkeleton = () => {
           <h5 class="mb-0">PROJECTS</h5>
           
           <div class="project-list">
-              ${loadAsHtml(projectList, (project) => `<hr><p class="projects">${project.name}</p>`)}
+              ${loadAsHtml(projectList, (project) => `<hr><p class="projects cursor">${project.name}</p>`)}
           </div>
       </div>
       <div class="col-md-9">
@@ -43,9 +40,9 @@ const appComponent = () => {
 
   appWrapper.innerHTML = appSkeleton();
 
-  const firstProject = appWrapper.querySelectorAll('.projects')[0]
-//   console.log(firstProject);
-  makeActive(firstProject)
+  const firstProject = appWrapper.querySelectorAll('.projects')[0];
+  //   console.log(firstProject);
+  makeActive(firstProject);
 
   return appWrapper;
 };

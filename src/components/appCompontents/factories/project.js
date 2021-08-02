@@ -48,17 +48,17 @@ const projectExists = (task, prjs) => {
 // };
 
 const create = (project) => {
-    let projectList = getProjects()
-    projectList.push(project);
-    saveProjects(projectList)
-}
+  const projectList = getProjects();
+  projectList.push(project);
+  saveProjects(projectList);
+};
 
 const Project = (Name) => {
   const name = Name;
   const todos = [];
 
-  create({name, todos})
-  return {name, todos}
+  create({ name, todos });
+  return { name, todos };
 };
 
 // Project.prototype.success = () => `Project ${this.name} successfully created`;

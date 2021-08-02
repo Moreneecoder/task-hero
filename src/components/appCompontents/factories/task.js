@@ -1,9 +1,9 @@
-import { getProjects, projectExists, saveProjects, Project } from './project';
+import {
+  getProjects, projectExists, saveProjects, Project,
+} from './project';
 import { loadAsHtml } from '../../../utils/domActions';
 
-
-const taskHtml  = (todo) => {
-    return `<div class="row mt-3 mx-2">
+const taskHtml = (todo) => `<div class="row mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
                 <input type="checkbox" name="" id="">
                 <p class="m-0">${todo.title}</p>
@@ -15,16 +15,14 @@ const taskHtml  = (todo) => {
                     <button class="btn btn-danger">Delete</button>
                 </div>
                 </div>
-             </div>`
-}
+             </div>`;
 
 const projectList = getProjects();
 
 const storeTask = (task, projects) => {
   projects.forEach((project) => {
-    if (project.name.toLowerCase() === task.project.toLowerCase()) {      
-        console.log(project.todos.length);
-      task['id'] = project.todos.length
+    if (project.name.toLowerCase() === task.project.toLowerCase()) {
+      task.id = project.todos.length;
       project.todos.push(task);
     }
   });
@@ -32,28 +30,32 @@ const storeTask = (task, projects) => {
   saveProjects(projects);
 };
 
+const displayTasks = (task, projects = projectList) => {
+    const taskList = document.querySelector('#task-list');
+    const projectIdx = projects.findIndex((project) => {
+        return project.name.toLowerCase() === task.project.toLowerCase();
+    });
+
+    taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo));
+}
+
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage
   if (projectExists(taskObj, projects)) {
-      // if yes, store new task in corresponding project
+    // if yes, store new task in corresponding project
     storeTask(taskObj, projects);
     // console.log(savedTask);
-  }
-  else{
+  } else {
     // if no, create project and store new task in it
-    Project(taskObj.project)
+    Project(taskObj.project);
     storeTask(taskObj, projects);
   }
 
-
   // load and display project tasks
-  let taskList = document.querySelector('#task-list');
-  const projectIdx = projects.findIndex(project => project.name.toLowerCase() === taskObj.project.toLowerCase());
-  taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo))
+  displayTasks(taskObj, projects)
 
-  let header = document.querySelector('#project-title')
-  header.textContent = projectList[projectIdx].name
-
+  const header = document.querySelector('#project-title');
+  header.textContent = projectList[projectIdx].name;
 };
 
-export {createNewTask, taskHtml};
+export { createNewTask, taskHtml };

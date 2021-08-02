@@ -24,13 +24,15 @@ const loadAsHtml = (projects, callback) => {
 };
 
 const makeActive = (target) => {
-  const projects = document.querySelectorAll('.projects')
+  const projects = document.querySelectorAll('.projects');
   // console.log(projects);
-  projects.forEach(element => {
-    element.classList.remove('active-project')
+  projects.forEach((element) => {
+    element.classList.remove('active-project');
   });
-  
-  target.classList.add('active-project');
-}
 
-export { removeChildWithinParent, addTabContent, loadAsHtml, makeActive };
+  target.classList.add('active-project');
+};
+
+export {
+  removeChildWithinParent, addTabContent, loadAsHtml, makeActive,
+};

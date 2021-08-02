@@ -1,3 +1,7 @@
+const saveProjects = (projects) => {
+    localStorage.setItem('projects', JSON.stringify(projects));
+}
+
 const getProjects = () => {
   if (!localStorage.getItem('projects')) {
     const projects = [
@@ -19,7 +23,7 @@ const getProjects = () => {
       },
     ];
 
-    localStorage.setItem('projects', JSON.stringify(projects));
+    saveProjects(projects)
   }
 
   return JSON.parse(localStorage.getItem('projects'));
@@ -49,4 +53,4 @@ const Project = (name) => {
 
 // Project.prototype.success = () => `Project ${this.name} successfully created`;
 
-export { getProjects, projectExists, Project };
+export { getProjects, projectExists, saveProjects, Project };

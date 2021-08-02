@@ -1,10 +1,23 @@
-import { getProjects, projectExists } from './project';
+import { getProjects, projectExists, saveProjects } from './project';
 
 const projectList = getProjects();
 
+const storeTask = (task, projects) => {
+    projects.forEach(project => {
+        if(project.name.toLowerCase() === task.project.toLowerCase()){
+            project.todos.push(task);
+        }
+    });
+
+    saveProjects(projects);
+}
+
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage
-  projectExists(taskObj, projects);
+  if(projectExists(taskObj, projects)){
+      storeTask(taskObj, projects);
+      console.log(localStorage.getItem('projects'));
+  }
 
   // if yes, store new task in corresponding project
   // if no, create project and store new task in it

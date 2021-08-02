@@ -3,6 +3,7 @@ import { loadAsHtml } from '../../utils/domActions';
 
 const appSkeleton = () => {
   const projectList = getProjects();
+  console.log(projectList);
 
   return `
     <div class="row px-3">

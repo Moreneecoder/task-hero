@@ -40,9 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const dueDate = document.querySelector('#date').value;
     const priority = document.querySelector('#priority').value;
     const project = document.querySelector('#project').value;
+    const done = false;
 
     createNewTask({
-      title, desc, dueDate, priority, project,
+      title, desc, dueDate, priority, project, done
     });
   });
 });

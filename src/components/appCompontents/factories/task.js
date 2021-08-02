@@ -1,4 +1,6 @@
 import { getProjects, projectExists, saveProjects, Project } from './project';
+import { loadAsHtml } from '../../../utils/domActions';
+
 
 const taskHtml  = (todo) => {
     return `<div class="row mt-3 mx-2">
@@ -38,11 +40,13 @@ const createNewTask = (taskObj, projects = projectList) => {
     // if no, create project and store new task in it
     Project(taskObj.project)
     storeTask(taskObj, projects);
-
   }
 
 
   // load and display project task
+  let taskList = document.querySelector('#task-list');
+  taskList.innerHTML = loadAsHtml(projectList[projectList.length - 1].todos, (todo) => taskHtml(todo))
+
 };
 
 export {createNewTask, taskHtml};

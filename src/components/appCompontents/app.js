@@ -20,7 +20,9 @@ const appSkeleton = () => {
 
           <div style="clear: both;"></div>
           
-          ${loadAsHtml(projectList[0].todos, (todo) => taskHtml(todo))}
+          <div id="task-list">
+            ${loadAsHtml(projectList[0].todos, (todo) => taskHtml(todo))}
+          </div>          
 
       </div>
     </div> `;

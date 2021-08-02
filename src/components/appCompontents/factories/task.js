@@ -1,7 +1,7 @@
 import {
   getProjects, projectExists, saveProjects, Project,
 } from './project';
-import { loadAsHtml } from '../../../utils/domActions';
+import { loadAsHtml, makeActive } from '../../../utils/domActions';
 
 const taskHtml = (todo) => `<div class="row mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
@@ -30,13 +30,24 @@ const storeTask = (task, projects) => {
   saveProjects(projects);
 };
 
-const displayTasks = (task, projects = projectList) => {
-    const taskList = document.querySelector('#task-list');
-    const projectIdx = projects.findIndex((project) => {
+const getProjectIndex = (task, projects = projectList) => {
+    return projects.findIndex((project) => {
         return project.name.toLowerCase() === task.project.toLowerCase();
     });
+}
+
+const displayTasks = (task, projects = projectList) => {
+    const taskList = document.querySelector('#task-list');
+    const projectIdx = getProjectIndex(task, projects)
 
     taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo));
+}
+
+const updateHeader = (task, projects = projectList) => {
+    const header = document.querySelector('#project-title');
+    const projectIdx = getProjectIndex(task, projects)
+
+    header.textContent = projectList[projectIdx].name;
 }
 
 const createNewTask = (taskObj, projects = projectList) => {
@@ -53,9 +64,10 @@ const createNewTask = (taskObj, projects = projectList) => {
 
   // load and display project tasks
   displayTasks(taskObj, projects)
+  updateHeader(taskObj, projects)
 
-  const header = document.querySelector('#project-title');
-  header.textContent = projectList[projectIdx].name;
+  const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj, projects)];
+  makeActive(currentProject);
 };
 
 export { createNewTask, taskHtml };

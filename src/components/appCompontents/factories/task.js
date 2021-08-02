@@ -30,15 +30,14 @@ const storeTask = (task, projects) => {
   });
 
   saveProjects(projects);
-  return task;
 };
 
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage
   if (projectExists(taskObj, projects)) {
       // if yes, store new task in corresponding project
-    const savedTask = storeTask(taskObj, projects);
-    console.log(savedTask);
+    storeTask(taskObj, projects);
+    // console.log(savedTask);
   }
   else{
     // if no, create project and store new task in it

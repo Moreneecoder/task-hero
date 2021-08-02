@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const done = false;
 
     createNewTask({
-      title, desc, dueDate, priority, project, done
+      title, desc, dueDate, priority, project, done,
     });
   });
 });

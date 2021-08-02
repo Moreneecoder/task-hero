@@ -2,6 +2,14 @@ import { getProjects } from './factories/project';
 import { loadAsHtml } from '../../utils/domActions';
 import { taskHtml } from './factories/task';
 
+// Dynamically add options to project select for new task form
+  const projectSelect = document.querySelector('#project')
+  const projectsHtml = loadAsHtml(getProjects(), (project) => {
+      return `<option value="${project.name}">${project.name}</option>`
+  });
+  
+  projectSelect.innerHTML = projectsHtml
+
 const appSkeleton = () => {
   const projectList = getProjects();
 
@@ -11,7 +19,7 @@ const appSkeleton = () => {
           <h5 class="mb-0">PROJECTS</h5>
           
           <div class="project-list">
-              ${loadAsHtml(projectList, (project) => `<hr><p>${project.name}</p>`)}
+              ${loadAsHtml(projectList, (project) => `<hr><p class="projects">${project.name}</p>`)}
           </div>
       </div>
       <div class="col-md-9">

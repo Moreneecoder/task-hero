@@ -1,3 +1,8 @@
 .project-list {
   list-style: none;
 }
+
+.active-project {
+  background-color: #22790c;
+  color: white;
+}

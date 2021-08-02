@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   mainContent.appendChild(homeComponent());
   // document.body.appendChild(footerComponent());
 
-  //   localStorage.removeItem('projects');
+
+    // localStorage.removeItem('projects');
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
@@ -28,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
       domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'contact-wrapper']);
       domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
     }
+
+    if(e.target && e.target.classList.contains('projects')){
+        domActions.makeActive(e.target)
+    }
+    // console.log(e.target.classList.contains('projects'));
   });
 
   const form = document.querySelector('#new-task-form');

@@ -30,8 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.target && e.target.classList.contains('projects')) {
       domActions.makeActive(e.target);
+
+      displayTasks(taskObj, projects)
+      updateHeader(taskObj, projects)
+
     }
-    // console.log(e.target.classList.contains('projects'));
+    
   });
 
   const form = document.querySelector('#new-task-form');

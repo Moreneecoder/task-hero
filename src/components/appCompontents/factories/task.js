@@ -30,22 +30,22 @@ const storeTask = (task, projects) => {
   saveProjects(projects);
 };
 
-const getProjectIndex = (task, projects = projectList) => {
+const getProjectIndex = (taskName, projects = projectList) => {
     return projects.findIndex((project) => {
-        return project.name.toLowerCase() === task.project.toLowerCase();
+        return project.name.toLowerCase() === taskName.toLowerCase();
     });
 }
 
-const displayTasks = (task, projects = projectList) => {
+const displayTasks = (taskName, projects = projectList) => {
     const taskList = document.querySelector('#task-list');
-    const projectIdx = getProjectIndex(task, projects)
+    const projectIdx = getProjectIndex(taskName, projects)
 
     taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo));
 }
 
-const updateHeader = (task, projects = projectList) => {
+const updateHeader = (taskName, projects = projectList) => {
     const header = document.querySelector('#project-title');
-    const projectIdx = getProjectIndex(task, projects)
+    const projectIdx = getProjectIndex(taskName, projects)
 
     header.textContent = projectList[projectIdx].name;
 }
@@ -63,10 +63,10 @@ const createNewTask = (taskObj, projects = projectList) => {
   }
 
   // load and display project tasks
-  displayTasks(taskObj, projects)
-  updateHeader(taskObj, projects)
+  displayTasks(taskObj.project)
+  updateHeader(taskObj.project, projects)
 
-  const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj, projects)];
+  const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj.project, projects)];
   makeActive(currentProject);
 };
 

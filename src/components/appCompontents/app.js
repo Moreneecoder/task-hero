@@ -1,6 +1,7 @@
 import { getProjects } from './factories/project';
 import { loadAsHtml } from '../../utils/domActions';
 import { taskHtml } from './factories/task';
+import { makeActive } from '../../utils/domActions';
 
 // Dynamically add options to project select for new task form
   const projectSelect = document.querySelector('#project')
@@ -41,6 +42,11 @@ const appComponent = () => {
   appWrapper.id = 'app-wrapper';
 
   appWrapper.innerHTML = appSkeleton();
+
+  const firstProject = appWrapper.querySelectorAll('.projects')[0]
+//   console.log(firstProject);
+  makeActive(firstProject)
+
   return appWrapper;
 };
 

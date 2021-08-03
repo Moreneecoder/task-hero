@@ -17,7 +17,7 @@ const appSkeleton = () => {
           <h5 class="mb-0">PROJECTS</h5>
           
           <div class="project-list">
-              ${loadAsHtml(projectList, (project) => `<hr><p class="projects cursor">${project.name}</p>`)}
+              ${loadAsHtml(projectList, (project) => `<hr><p data-id='${project.name}' class="projects cursor">${project.name}</p>`)}
           </div>
       </div>
       <div class="col-md-9">

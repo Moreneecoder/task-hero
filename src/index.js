@@ -7,7 +7,7 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import { createNewTask } from './components/appCompontents/factories/task';
+import { createNewTask, displayTasks, updateHeader } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
@@ -31,8 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target && e.target.classList.contains('projects')) {
       domActions.makeActive(e.target);
 
-      displayTasks(taskObj, projects)
-      updateHeader(taskObj, projects)
+      const projectName = e.target.getAttribute('data-id')
+
+      displayTasks(projectName)
+      updateHeader(projectName)
 
     }
     

@@ -50,6 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         newProject.value = '';
       }
     }
+
+    if (e.target && e.target.classList.contains('delete-btn')){
+        console.log(e.target.closest('.task'));
+    }
   });
 
   const form = document.querySelector('#new-task-form');

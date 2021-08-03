@@ -1,8 +1,5 @@
 const saveProjects = (projects) => {
-    // console.log(projects);
   localStorage.setItem('projects', JSON.stringify(projects));
-
-//   console.log(JSON.parse(localStorage.getItem('projects')));
 };
 
 const getProjects = () => {
@@ -41,34 +38,29 @@ const projectExists = (task, prjs) => {
   return false;
 };
 
-// Array.prototype.loadAsHtml = function (callback) {
-//   let list = '';
-//   this.forEach((obj) => {
-//     list += (callback(obj));
-//   });
-
-//   return list;
-// };
 const projectList = getProjects();
 
 const create = (project, projects = projectList) => {
   projects.push(project);
-  console.log(projects);
-//   localStorage.removeItem('projects')
-//   localStorage.setItem('projects', JSON.stringify(projects));
   saveProjects(projects);
 };
 
 const Project = (Name) => {
   const name = Name;
   const todos = [];
-//   console.log({name, todos});
+
   create({ name, todos });
   return { name, todos };
 };
 
+const addToProjectsMenu = (projectName) => {
+    document.querySelector('.project-list').innerHTML += `
+        <hr><p data-id='${projectName}' class="projects cursor">${projectName}</p>
+    `
+}
+
 // Project.prototype.success = () => `Project ${this.name} successfully created`;
 
 export {
-  getProjects, projectExists, saveProjects, Project,
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu
 };

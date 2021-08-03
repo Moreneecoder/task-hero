@@ -1,5 +1,5 @@
 import {
-  getProjects, projectExists, saveProjects, Project,
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu
 } from './project';
 import { loadAsHtml, makeActive } from '../../../utils/domActions';
 
@@ -61,10 +61,7 @@ const createNewTask = (taskObj, projects = projectList) => {
     // console.log('no project');
     Project(taskObj.project);
     storeTask(taskObj, getProjects());
-    // appendNewProject()
-    // <hr><p data-id='${project.name}' class="projects cursor">${project.name}</p>
-    // const newProject = document.createElement('p')
-    document.querySelector('.project-list').innerHTML += `<hr><p data-id='${taskObj.project}' class="projects cursor">${taskObj.project}</p>`
+    addToProjectsMenu(taskObj.project)    
   }
 
   // load and display project tasks

@@ -1,5 +1,5 @@
 import {
-  getProjects, projectExists, saveProjects, Project, addToProjectsMenu
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
 } from './project';
 import { loadAsHtml, makeActive } from '../../../utils/domActions';
 
@@ -31,24 +31,23 @@ const storeTask = (task, projects) => {
 };
 
 const getProjectIndex = (projectName, projects = projectList) => {
-    return projects.findIndex((project) => {
-        return project.name.toLowerCase() === projectName.toLowerCase();
-    });
-}
+  const index = projects.findIndex((proj) => proj.name.toLowerCase() === projectName.toLowerCase());
+  return index;
+};
 
 const displayTasks = (projectName, projects = getProjects()) => {
-    const taskList = document.querySelector('#task-list');
-    const projectIdx = getProjectIndex(projectName, projects)
+  const taskList = document.querySelector('#task-list');
+  const projectIdx = getProjectIndex(projectName, projects);
 
-    taskList.innerHTML = loadAsHtml(projects[projectIdx].todos, (todo) => taskHtml(todo));
-}
+  taskList.innerHTML = loadAsHtml(projects[projectIdx].todos, (todo) => taskHtml(todo));
+};
 
 const updateHeader = (projectName, projects = getProjects()) => {
-    const header = document.querySelector('#project-title');
-    const projectIdx = getProjectIndex(projectName, projects)
+  const header = document.querySelector('#project-title');
+  const projectIdx = getProjectIndex(projectName, projects);
 
-    header.textContent = projects[projectIdx].name;
-}
+  header.textContent = projects[projectIdx].name;
+};
 
 const createNewTask = (taskObj, projects = projectList) => {
   // check if project exists in localstorage
@@ -61,16 +60,17 @@ const createNewTask = (taskObj, projects = projectList) => {
     // console.log('no project');
     Project(taskObj.project);
     storeTask(taskObj, getProjects());
-    addToProjectsMenu(taskObj.project)    
+    addToProjectsMenu(taskObj.project);
   }
 
   // load and display project tasks
-  displayTasks(taskObj.project)
-  updateHeader(taskObj.project)
-  
+  displayTasks(taskObj.project);
+  updateHeader(taskObj.project);
 
   const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj.project, getProjects())];
   makeActive(currentProject);
 };
 
-export { createNewTask, taskHtml, displayTasks, updateHeader };
+export {
+  createNewTask, taskHtml, displayTasks, updateHeader,
+};

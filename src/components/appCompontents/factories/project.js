@@ -54,13 +54,13 @@ const Project = (Name) => {
 };
 
 const addToProjectsMenu = (projectName) => {
-    document.querySelector('.project-list').innerHTML += `
+  document.querySelector('.project-list').innerHTML += `
         <hr><p data-id='${projectName}' class="projects cursor">${projectName}</p>
-    `
-}
+    `;
+};
 
 // Project.prototype.success = () => `Project ${this.name} successfully created`;
 
 export {
-  getProjects, projectExists, saveProjects, Project, addToProjectsMenu
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
 };

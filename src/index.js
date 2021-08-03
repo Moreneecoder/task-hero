@@ -31,27 +31,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target && e.target.classList.contains('projects')) {
       domActions.makeActive(e.target);
 
-      const projectName = e.target.getAttribute('data-id')
+      const projectName = e.target.getAttribute('data-id');
 
-      displayTasks(projectName)
-      updateHeader(projectName)
-
+      displayTasks(projectName);
+      updateHeader(projectName);
     }
 
-    if (e.target && e.target.id === 'new-proj-btn'){
-        const newProject = document.querySelector('#new-proj')
-        if(newProject.value){
-            // console.log('I see Am');
-            const newOption = document.createElement('option')
-            newOption.value = newProject.value
-            newOption.textContent = newProject.value
+    if (e.target && e.target.id === 'new-proj-btn') {
+      const newProject = document.querySelector('#new-proj');
+      if (newProject.value) {
+        // console.log('I see Am');
+        const newOption = document.createElement('option');
+        newOption.value = newProject.value;
+        newOption.textContent = newProject.value;
 
-            const projectSelect = document.querySelector('#project')
-            projectSelect.appendChild(newOption)
-            newProject.value = ''
-        }
+        const projectSelect = document.querySelector('#project');
+        projectSelect.appendChild(newOption);
+        newProject.value = '';
+      }
     }
-    
   });
 
   const form = document.querySelector('#new-task-form');

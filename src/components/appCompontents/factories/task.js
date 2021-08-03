@@ -11,7 +11,7 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 <p class="m-0 text-primary">${todo.priority}</p>
 
                 <div class="ml-auto">                    
-                    <button class="btn btn-warning text-white">Edit</button>
+                    <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
                     <button class="btn btn-danger delete-btn">Delete</button>
                 </div>
                 </div>

@@ -1,5 +1,8 @@
 const saveProjects = (projects) => {
+    // console.log(projects);
   localStorage.setItem('projects', JSON.stringify(projects));
+
+//   console.log(JSON.parse(localStorage.getItem('projects')));
 };
 
 const getProjects = () => {
@@ -46,17 +49,20 @@ const projectExists = (task, prjs) => {
 
 //   return list;
 // };
+const projectList = getProjects();
 
-const create = (project) => {
-  const projectList = getProjects();
-  projectList.push(project);
-  saveProjects(projectList);
+const create = (project, projects = projectList) => {
+  projects.push(project);
+  console.log(projects);
+//   localStorage.removeItem('projects')
+//   localStorage.setItem('projects', JSON.stringify(projects));
+  saveProjects(projects);
 };
 
 const Project = (Name) => {
   const name = Name;
   const todos = [];
-
+//   console.log({name, todos});
   create({ name, todos });
   return { name, todos };
 };

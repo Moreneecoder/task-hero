@@ -37,6 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
       updateHeader(projectName)
 
     }
+
+    if (e.target && e.target.id === 'new-proj-btn'){
+        const newProject = document.querySelector('#new-proj')
+        if(newProject.value){
+            // console.log('I see Am');
+            const newOption = document.createElement('option')
+            newOption.value = newProject.value
+            newOption.textContent = newProject.value
+
+            const projectSelect = document.querySelector('#project')
+            projectSelect.appendChild(newOption)
+            newProject.value = ''
+        }
+    }
     
   });
 

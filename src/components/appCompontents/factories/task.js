@@ -36,18 +36,18 @@ const getProjectIndex = (projectName, projects = projectList) => {
     });
 }
 
-const displayTasks = (projectName, projects = projectList) => {
+const displayTasks = (projectName, projects = getProjects()) => {
     const taskList = document.querySelector('#task-list');
     const projectIdx = getProjectIndex(projectName, projects)
 
-    taskList.innerHTML = loadAsHtml(projectList[projectIdx].todos, (todo) => taskHtml(todo));
+    taskList.innerHTML = loadAsHtml(projects[projectIdx].todos, (todo) => taskHtml(todo));
 }
 
-const updateHeader = (projectName, projects = projectList) => {
+const updateHeader = (projectName, projects = getProjects()) => {
     const header = document.querySelector('#project-title');
     const projectIdx = getProjectIndex(projectName, projects)
 
-    header.textContent = projectList[projectIdx].name;
+    header.textContent = projects[projectIdx].name;
 }
 
 const createNewTask = (taskObj, projects = projectList) => {
@@ -58,15 +58,21 @@ const createNewTask = (taskObj, projects = projectList) => {
     // console.log(savedTask);
   } else {
     // if no, create project and store new task in it
+    // console.log('no project');
     Project(taskObj.project);
-    storeTask(taskObj, projects);
+    storeTask(taskObj, getProjects());
+    // appendNewProject()
+    // <hr><p data-id='${project.name}' class="projects cursor">${project.name}</p>
+    // const newProject = document.createElement('p')
+    document.querySelector('.project-list').innerHTML += `<hr><p data-id='${taskObj.project}' class="projects cursor">${taskObj.project}</p>`
   }
 
   // load and display project tasks
   displayTasks(taskObj.project)
   updateHeader(taskObj.project)
+  
 
-  const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj.project, projects)];
+  const currentProject = document.querySelectorAll('.projects')[getProjectIndex(taskObj.project, getProjects())];
   makeActive(currentProject);
 };
 

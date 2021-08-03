@@ -59,8 +59,6 @@ const addToProjectsMenu = (projectName) => {
     `;
 };
 
-// Project.prototype.success = () => `Project ${this.name} successfully created`;
-
 export {
   getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
 };

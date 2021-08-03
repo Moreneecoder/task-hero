@@ -29,7 +29,7 @@ const loadAsHtml = (projects, callback) => {
 
 const makeActive = (target) => {
   const projects = document.querySelectorAll('.projects');
-  // console.log(projects);
+
   projects.forEach((element) => {
     element.classList.remove('active-project');
   });

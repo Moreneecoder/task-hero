@@ -69,5 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createNewTask({
       title, desc, dueDate, priority, project, done,
     });
+
+    form.reset();
   });
 });

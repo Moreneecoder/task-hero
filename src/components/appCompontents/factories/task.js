@@ -1,7 +1,7 @@
 import {
   getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
 } from './project';
-import { loadAsHtml, makeActive } from '../../../utils/domActions';
+import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
 const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
@@ -50,20 +50,15 @@ const updateHeader = (projectName, projects = getProjects()) => {
 };
 
 const createNewTask = (taskObj, projects = projectList) => {
-  // check if project exists in localstorage
+
   if (projectExists(taskObj, projects)) {
-    // if yes, store new task in corresponding project
     storeTask(taskObj, projects);
-    // console.log(savedTask);
   } else {
-    // if no, create project and store new task in it
-    // console.log('no project');
     Project(taskObj.project);
     storeTask(taskObj, getProjects());
     addToProjectsMenu(taskObj.project);
   }
 
-  // load and display project tasks
   displayTasks(taskObj.project);
   updateHeader(taskObj.project);
 
@@ -71,6 +66,20 @@ const createNewTask = (taskObj, projects = projectList) => {
   makeActive(currentProject);
 };
 
+const removeTaskFromStorage = (obj) => {
+    const projects = getProjects()
+    const taskId = obj.task.getAttribute('data-id')
+    const index = getProjectIndex(obj.project, projects);
+    projects[index].todos.splice(taskId, 1)
+    
+    saveProjects(projects)
+}
+
+const deleteTask = (obj) => { 
+    removeTaskFromStorage(obj)
+    removeFromDom(obj.task)
+}
+
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader,
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask
 };

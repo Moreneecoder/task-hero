@@ -7,7 +7,7 @@ import navComponent from './components/nav';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
-import { createNewTask, displayTasks, updateHeader } from './components/appCompontents/factories/task';
+import { createNewTask, displayTasks, updateHeader, deleteTask } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
@@ -52,7 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (e.target && e.target.classList.contains('delete-btn')){
-        console.log(e.target.closest('.task'));
+        const task = e.target.closest('.task')
+        const project = document.querySelector('#project-title').textContent
+
+        // console.log(project);
+        deleteTask({task, project})
     }
   });
 

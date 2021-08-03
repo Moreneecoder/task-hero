@@ -7,6 +7,10 @@ const removeChildWithinParent = (parent, childList) => {
   });
 };
 
+const removeFromDom = (task) => {
+  task.remove()
+}
+
 const addTabContent = (parent, child, component) => {
   const childNode = document.getElementById(child);
   if (!parent.contains(childNode)) {
@@ -34,5 +38,5 @@ const makeActive = (target) => {
 };
 
 export {
-  removeChildWithinParent, addTabContent, loadAsHtml, makeActive,
+  removeChildWithinParent, addTabContent, loadAsHtml, makeActive, removeFromDom
 };

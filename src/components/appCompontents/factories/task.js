@@ -50,7 +50,6 @@ const updateHeader = (projectName, projects = getProjects()) => {
 };
 
 const createNewTask = (taskObj, projects = projectList) => {
-
   if (projectExists(taskObj, projects)) {
     storeTask(taskObj, projects);
   } else {
@@ -67,19 +66,19 @@ const createNewTask = (taskObj, projects = projectList) => {
 };
 
 const removeTaskFromStorage = (obj) => {
-    const projects = getProjects()
-    const taskId = obj.task.getAttribute('data-id')
-    const index = getProjectIndex(obj.project, projects);
-    projects[index].todos.splice(taskId, 1)
-    
-    saveProjects(projects)
-}
+  const projects = getProjects();
+  const taskId = obj.task.getAttribute('data-id');
+  const index = getProjectIndex(obj.project, projects);
+  projects[index].todos.splice(taskId, 1);
 
-const deleteTask = (obj) => { 
-    removeTaskFromStorage(obj)
-    removeFromDom(obj.task)
-}
+  saveProjects(projects);
+};
+
+const deleteTask = (obj) => {
+  removeTaskFromStorage(obj);
+  removeFromDom(obj.task);
+};
 
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask,
 };

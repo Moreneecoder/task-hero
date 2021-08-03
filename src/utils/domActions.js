@@ -8,8 +8,8 @@ const removeChildWithinParent = (parent, childList) => {
 };
 
 const removeFromDom = (task) => {
-  task.remove()
-}
+  task.remove();
+};
 
 const addTabContent = (parent, child, component) => {
   const childNode = document.getElementById(child);
@@ -38,5 +38,5 @@ const makeActive = (target) => {
 };
 
 export {
-  removeChildWithinParent, addTabContent, loadAsHtml, makeActive, removeFromDom
+  removeChildWithinParent, addTabContent, loadAsHtml, makeActive, removeFromDom,
 };

@@ -65,12 +65,24 @@ const createNewTask = (taskObj, projects = projectList) => {
   makeActive(currentProject);
 };
 
+const reassginTaskIds = (tasks) => {
+    let count = 0
+    tasks.forEach(task => {
+        task.id = count
+        count++
+    })
+
+    // cons ole.log(tasks);
+}
+
 const removeTaskFromStorage = (obj) => {
   const projects = getProjects();
   const taskId = obj.task.getAttribute('data-id');
   const index = getProjectIndex(obj.project, projects);
-  projects[index].todos.splice(taskId, 1);
-
+  const tasks = projects[index].todos
+  tasks.splice(taskId, 1);
+  reassginTaskIds(tasks)
+//   console.log(projects);
   saveProjects(projects);
 };
 

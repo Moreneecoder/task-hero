@@ -8,7 +8,7 @@ import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
 import {
-  createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm
+  createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm,
 } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target && e.target.id === 'new-proj-btn') {
       const newProject = document.querySelector('#new-proj');
       if (newProject.value) {
-
         const newOption = document.createElement('option');
         newOption.value = newProject.value;
         newOption.textContent = newProject.value;
@@ -58,11 +57,11 @@ document.addEventListener('DOMContentLoaded', () => {
       deleteTask({ task, project });
     }
 
-    if(e.target && e.target.classList.contains('edit-btn')){
-        const task = e.target.closest('.task');
-        const project = document.querySelector('#project-title').textContent;
-        
-        loadTaskOnEditForm({ task, project })
+    if (e.target && e.target.classList.contains('edit-btn')) {
+      const task = e.target.closest('.task');
+      const project = document.querySelector('#project-title').textContent;
+
+      loadTaskOnEditForm({ task, project });
     }
   });
 
@@ -87,16 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const editForm = document.querySelector('#edit-task-form');
 
-  editForm.addEventListener('submit', e => {
-      e.preventDefault();
+  editForm.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-      const id = document.querySelector('#task-id').value;
-      const title = document.querySelector('#edit-title').value;
-      const desc = document.querySelector('#edit-desc').value;
-      const dueDate = document.querySelector('#edit-date').value;
-      const priority = document.querySelector('#edit-priority').value;
-      const project = document.querySelector('#edit-project').value;
+    const id = document.querySelector('#task-id').value;
+    const title = document.querySelector('#edit-title').value;
+    const desc = document.querySelector('#edit-desc').value;
+    const dueDate = document.querySelector('#edit-date').value;
+    const priority = document.querySelector('#edit-priority').value;
+    const project = document.querySelector('#edit-project').value;
 
-    editTask({id, title, desc, dueDate, priority, project})
-  })
+    editTask({
+      id, title, desc, dueDate, priority, project,
+    });
+  });
 });

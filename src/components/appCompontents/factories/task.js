@@ -66,22 +66,21 @@ const createNewTask = (taskObj, projects = projectList) => {
 };
 
 const reassginTaskIds = (tasks) => {
-    let count = 0
-    tasks.forEach(task => {
-        task.id = count
-        count++
-    })
-
-}
+  let count = 0;
+  tasks.forEach((task) => {
+    task.id = count;
+    count += 1;
+  });
+};
 
 const removeTaskFromStorage = (obj) => {
   const projects = getProjects();
   const taskId = obj.task.getAttribute('data-id');
   const index = getProjectIndex(obj.project, projects);
-  const tasks = projects[index].todos
+  const tasks = projects[index].todos;
   tasks.splice(taskId, 1);
-        
-  reassginTaskIds(tasks)
+
+  reassginTaskIds(tasks);
   saveProjects(projects);
 };
 
@@ -91,52 +90,52 @@ const deleteTask = (obj) => {
 };
 
 const selectPriority = (priority) => {
-    const editSelect = document.querySelector('#edit-priority')
-    const selectOpts = editSelect.querySelectorAll('option')
+  const editSelect = document.querySelector('#edit-priority');
+  const selectOpts = editSelect.querySelectorAll('option');
 
-    selectOpts.forEach(opt => {
-        console.log(opt.value, priority);
-        opt.value === priority ? opt.setAttribute('selected', 'selected') : opt.removeAttribute('selected')
-    });
-
-}
+  selectOpts.forEach((opt) => {
+    if (opt.value === priority) {
+      opt.setAttribute('selected', 'selected');
+    } else {
+      opt.removeAttribute('selected');
+    }
+  });
+};
 
 const loadTaskOnEditForm = (obj) => {
-    const projects = getProjects();
-    const taskId = obj.task.getAttribute('data-id');
-    const index = getProjectIndex(obj.project, projects);
-    const taskFromStorage = projects[index].todos[taskId];
+  const projects = getProjects();
+  const taskId = obj.task.getAttribute('data-id');
+  const index = getProjectIndex(obj.project, projects);
+  const taskFromStorage = projects[index].todos[taskId];
 
-    document.querySelector('#task-id').value = taskFromStorage.id
-    document.querySelector('#edit-title').value = taskFromStorage.title
-    document.querySelector('#edit-desc').value = taskFromStorage.desc
-    document.querySelector('#edit-date').value = taskFromStorage.dueDate
-    document.querySelector('#edit-project').value = obj.project
+  document.querySelector('#task-id').value = taskFromStorage.id;
+  document.querySelector('#edit-title').value = taskFromStorage.title;
+  document.querySelector('#edit-desc').value = taskFromStorage.desc;
+  document.querySelector('#edit-date').value = taskFromStorage.dueDate;
+  document.querySelector('#edit-project').value = obj.project;
 
-    selectPriority(taskFromStorage.priority)
-}
+  selectPriority(taskFromStorage.priority);
+};
 
 const updateTaskInStorage = (obj) => {
-    const projects = getProjects();
-    const index = getProjectIndex(obj.project, projects);
-    const currentTask = projects[index].todos[obj.id];
+  const projects = getProjects();
+  const index = getProjectIndex(obj.project, projects);
+  const currentTask = projects[index].todos[obj.id];
 
-    Object.keys(obj).forEach(element => {
-        if(currentTask[element]){
-            currentTask[element] = obj[element]
-        }
-    });
-    
-    saveProjects(projects)
-}
+  Object.keys(obj).forEach((element) => {
+    if (currentTask[element]) {
+      currentTask[element] = obj[element];
+    }
+  });
+
+  saveProjects(projects);
+};
 
 const editTask = (obj) => {
-    
-    updateTaskInStorage(obj)
-    displayTasks(obj.project)
-
-}
+  updateTaskInStorage(obj);
+  displayTasks(obj.project);
+};
 
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm,
 };

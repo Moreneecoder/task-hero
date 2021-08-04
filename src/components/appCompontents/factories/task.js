@@ -105,7 +105,7 @@ const loadTaskOnEditForm = (obj) => {
     selectPriority(taskFromStorage.priority)
 }
 
-const editTask = (obj) => {
+const updateTaskInStorage = (obj) => {
     const projects = getProjects();
     const index = getProjectIndex(obj.project, projects);
     const currentTask = projects[index].todos[obj.id];
@@ -117,7 +117,13 @@ const editTask = (obj) => {
     });
     
     saveProjects(projects)
-  console.log(getProjects());
+}
+
+const editTask = (obj) => {
+    
+    updateTaskInStorage(obj)
+    displayTasks(obj.project)
+
 }
 
 export {

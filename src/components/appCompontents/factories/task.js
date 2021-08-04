@@ -96,17 +96,30 @@ const loadTaskOnEditForm = (obj) => {
     const index = getProjectIndex(obj.project, projects);
     const taskFromStorage = projects[index].todos[taskId];
 
+    document.querySelector('#task-id').value = taskFromStorage.id
     document.querySelector('#edit-title').value = taskFromStorage.title
     document.querySelector('#edit-desc').value = taskFromStorage.desc
     document.querySelector('#edit-date').value = taskFromStorage.dueDate
+    document.querySelector('#edit-project').value = obj.project
 
     selectPriority(taskFromStorage.priority)
 }
 
 const editTask = (obj) => {
-  loadTaskOnEditForm(obj)
+    const projects = getProjects();
+    const index = getProjectIndex(obj.project, projects);
+    const currentTask = projects[index].todos[obj.id];
+
+    Object.keys(obj).forEach(element => {
+        if(currentTask[element]){
+            currentTask[element] = obj[element]
+        }
+    });
+    
+    saveProjects(projects)
+  console.log(getProjects());
 }
 
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm
 };

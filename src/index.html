@@ -83,6 +83,14 @@
             <div class="modal-body">
               
                 <form id="edit-task-form">
+
+                    <div class="mb-3">
+                        <label for="edit-project" class="form-label">Project</label>
+                        <input type="text" name="project" class="form-control" id="edit-project" readonly required>                      
+                      </div>
+
+                      <input type="number" name="id" id="task-id" hidden>
+
                     <div class="mb-3">
                       <label for="edit-title" class="form-label">Task Title</label>
                       <input type="text" name="title" class="form-control" id="edit-title" required>                      

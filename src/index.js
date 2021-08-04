@@ -8,7 +8,7 @@ import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
 import {
-  createNewTask, displayTasks, updateHeader, deleteTask, editTask
+  createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm
 } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = e.target.closest('.task');
         const project = document.querySelector('#project-title').textContent;
         
-        editTask({ task, project })
+        loadTaskOnEditForm({ task, project })
     }
   });
 
@@ -86,4 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.reset();
   });
+
+  const editForm = document.querySelector('#edit-task-form');
+
+  editForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const id = document.querySelector('#task-id').value;
+      const title = document.querySelector('#edit-title').value;
+      const desc = document.querySelector('#edit-desc').value;
+      const dueDate = document.querySelector('#edit-date').value;
+      const priority = document.querySelector('#edit-priority').value;
+      const project = document.querySelector('#edit-project').value;
+
+    editTask({id, title, desc, dueDate, priority, project})
+  })
 });

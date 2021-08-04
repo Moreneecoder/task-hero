@@ -8,7 +8,7 @@ import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
 import {
-  createNewTask, displayTasks, updateHeader, deleteTask,
+  createNewTask, displayTasks, updateHeader, deleteTask, editTask
 } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target && e.target.id === 'new-proj-btn') {
       const newProject = document.querySelector('#new-proj');
       if (newProject.value) {
-        // console.log('I see Am');
+
         const newOption = document.createElement('option');
         newOption.value = newProject.value;
         newOption.textContent = newProject.value;
@@ -57,8 +57,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const task = e.target.closest('.task');
       const project = document.querySelector('#project-title').textContent;
 
-      // console.log(project);
       deleteTask({ task, project });
+    }
+
+    if(e.target && e.target.classList.contains('edit-btn')){
+        const task = e.target.closest('.task');
+        const project = document.querySelector('#project-title').textContent;
+        
+        editTask({ task, project })
     }
   });
 

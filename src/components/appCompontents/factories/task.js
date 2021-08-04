@@ -11,7 +11,7 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 <p class="m-0 text-primary">${todo.priority}</p>
 
                 <div class="ml-auto">                    
-                    <button class="btn btn-warning text-white" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
+                    <button class="btn btn-warning text-white edit-btn" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
                     <button class="btn btn-danger delete-btn">Delete</button>
                 </div>
                 </div>
@@ -79,6 +79,34 @@ const deleteTask = (obj) => {
   removeFromDom(obj.task);
 };
 
+const selectPriority = (priority) => {
+    const editSelect = document.querySelector('#edit-priority')
+    const selectOpts = editSelect.querySelectorAll('option')
+
+    selectOpts.forEach(opt => {
+        console.log(opt.value, priority);
+        opt.value === priority ? opt.setAttribute('selected', 'selected') : opt.removeAttribute('selected')
+    });
+
+}
+
+const loadTaskOnEditForm = (obj) => {
+    const projects = getProjects();
+    const taskId = obj.task.getAttribute('data-id');
+    const index = getProjectIndex(obj.project, projects);
+    const taskFromStorage = projects[index].todos[taskId];
+
+    document.querySelector('#edit-title').value = taskFromStorage.title
+    document.querySelector('#edit-desc').value = taskFromStorage.desc
+    document.querySelector('#edit-date').value = taskFromStorage.dueDate
+
+    selectPriority(taskFromStorage.priority)
+}
+
+const editTask = (obj) => {
+  loadTaskOnEditForm(obj)
+}
+
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask,
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask
 };

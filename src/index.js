@@ -4,6 +4,7 @@ import 'bootstrap/js/dist/dropdown';
 import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/modal';
 import navComponent from './components/nav';
+import footerComponent from './components/footer';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
@@ -13,6 +14,7 @@ import {
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.prepend(navComponent());
+  document.body.appendChild(footerComponent());
 
   const mainContent = document.getElementById('content');
   mainContent.appendChild(homeComponent());

@@ -72,7 +72,6 @@ const reassginTaskIds = (tasks) => {
         count++
     })
 
-    // cons ole.log(tasks);
 }
 
 const removeTaskFromStorage = (obj) => {
@@ -81,8 +80,8 @@ const removeTaskFromStorage = (obj) => {
   const index = getProjectIndex(obj.project, projects);
   const tasks = projects[index].todos
   tasks.splice(taskId, 1);
+        
   reassginTaskIds(tasks)
-//   console.log(projects);
   saveProjects(projects);
 };
 

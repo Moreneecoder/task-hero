@@ -17,8 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainContent = document.getElementById('content');
   mainContent.appendChild(homeComponent());
 
-  // localStorage.removeItem('projects');
-
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
       domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);

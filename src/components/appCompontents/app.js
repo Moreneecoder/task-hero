@@ -41,7 +41,6 @@ const appComponent = () => {
   appWrapper.innerHTML = appSkeleton();
 
   const firstProject = appWrapper.querySelectorAll('.projects')[0];
-  //   console.log(firstProject);
   makeActive(firstProject);
 
   return appWrapper;

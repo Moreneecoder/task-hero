@@ -35,9 +35,7 @@ const projectExists = (task, prjs) => {
   return false;
 };
 
-const projectList = getProjects();
-
-const create = (project, projects = projectList) => {
+const create = (project, projects = getProjects()) => {
   projects.push(project);
   saveProjects(projects);
 };

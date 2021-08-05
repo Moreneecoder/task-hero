@@ -6,7 +6,7 @@ const footerComponent = () => {
   const authorLink = document.createElement('a');
   authorLink.classList.add('text-decoration-none', 'text-white', 'fw-bolder');
   authorLink.href = 'https://github.com/Moreneecoder';
-  authorLink.textContent = "Made with love by Mo' Bello";
+  authorLink.innerHTML = "Made with &#10084; by Mo' Bello";
 
   footer.appendChild(authorLink);
 

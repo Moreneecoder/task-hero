@@ -8,7 +8,7 @@ const homeComponent = () => {
     <h4 class="alert alert-success">Your all-in-one task management app</h4>
 
     <div class="row container mx-auto align-items-end">
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
               <img src="${taskImg}" class="img-fluid" alt="">
               <div class="alert alert-success text-center p-2 mt-1">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere in eos corrupti ea ducimus vel doloribus 
@@ -17,11 +17,11 @@ const homeComponent = () => {
               </div>
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-4 d-none d-lg-block">
               <img src="${taskImg1}" class="img-fluid" alt="">
           </div>
 
-          <div class="col-md-4">
+          <div class="col-md-6 col-lg-4">
               <img src="${taskImg2}" class="img-fluid" alt="">
               <div class="alert alert-success text-center p-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere in eos corrupti ea ducimus vel doloribus 

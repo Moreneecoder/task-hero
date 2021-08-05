@@ -11,8 +11,8 @@ const getProjects = () => {
           {
             id: 0,
             title: 'Start Here',
-            description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
-            dueDate: 'Aug 5, 2021',
+            desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
+            dueDate: '2021-08-05',
             priority: 'Low',
             done: false,
           },

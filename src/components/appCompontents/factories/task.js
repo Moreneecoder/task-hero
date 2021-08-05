@@ -5,7 +5,7 @@ import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions
 
 const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
-                <input type="checkbox" name="" id="">
+                <input type="checkbox" name="" class="done-check" id="">
                 <p class="m-0">${todo.title}</p>
                 <p class="m-0">${todo.dueDate}</p>
                 <p class="m-0 text-primary">${todo.priority}</p>
@@ -136,6 +136,27 @@ const editTask = (obj) => {
   displayTasks(obj.project);
 };
 
+const toggleDoneStatus = obj => {
+    const projects = getProjects();
+    const taskId = obj.task.getAttribute('data-id');
+    const index = getProjectIndex(obj.project, projects);
+    const taskFromStorage = projects[index].todos[taskId];
+
+    if(taskFromStorage.done){
+        taskFromStorage.done = false
+    }
+    else{
+        taskFromStorage.done = true
+    }
+
+    saveProjects(projects)
+}
+
+const checkTask = obj => {
+    toggleDoneStatus(obj)
+    updateDoneInDom(obj)
+}
+
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm,
+  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm, checkTask
 };

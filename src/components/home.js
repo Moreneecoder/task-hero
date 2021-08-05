@@ -26,7 +26,7 @@ const homeComponent = () => {
               <div class="alert alert-success text-center p-2">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere in eos corrupti ea ducimus vel doloribus 
                 voluptatem, ullam officiis animi voluptatibus excepturi molestiae esse aperiam quasi numquam amet, 
-                repellendus maxime.
+                repellendus mblaxime.
               </div>
           </div>
     </div>

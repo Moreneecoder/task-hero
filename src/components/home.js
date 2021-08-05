@@ -1,6 +1,6 @@
-import taskImg from '../assets/images/add_task.svg'
-import taskImg1 from '../assets/images/completed_tasks.svg'
-import taskImg2 from '../assets/images/Push_notifications.png'
+import taskImg from '../assets/images/add_task.svg';
+import taskImg1 from '../assets/images/completed_tasks.svg';
+import taskImg2 from '../assets/images/Push_notifications.png';
 
 const homeComponent = () => {
   const homeHtml = `<div class="text-center">

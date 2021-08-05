@@ -4,21 +4,26 @@ import {
 import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
 const getAlterDiv = (status) => {
-    if (status) {
-        return `<div class='alert alert-info p-1'>Done</div>`
-    }
-    else{
-        return `
+  let output;
+  if (status) {
+    output = '<div class=\'alert alert-info p-1\'>Done</div>';
+  } else {
+    output = `
             <button class="btn btn-warning text-white edit-btn" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
-            <button class="btn btn-danger delete-btn">Delete</button>`
-    }
-}
+            <button class="btn btn-danger delete-btn">Delete</button>`;
+  }
 
-const checkBox = status => {
-    if (status){        
-        return 'checked'
-    }
-}
+  return output;
+};
+
+const checkBox = (status) => {
+  let output;
+  if (status) {
+    output = 'checked';
+  }
+
+  return output;
+};
 
 const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
@@ -152,35 +157,35 @@ const editTask = (obj) => {
   displayTasks(obj.project);
 };
 
-const toggleDoneStatus = obj => {
-    const projects = getProjects();
-    const taskId = obj.task.getAttribute('data-id');
-    const index = getProjectIndex(obj.project, projects);
-    const taskFromStorage = projects[index].todos[taskId];
+const toggleDoneStatus = (obj) => {
+  const projects = getProjects();
+  const taskId = obj.task.getAttribute('data-id');
+  const index = getProjectIndex(obj.project, projects);
+  const taskFromStorage = projects[index].todos[taskId];
 
-    if(taskFromStorage.done){
-        taskFromStorage.done = false
-    }
-    else{
-        taskFromStorage.done = true
-    }
+  if (taskFromStorage.done) {
+    taskFromStorage.done = false;
+  } else {
+    taskFromStorage.done = true;
+  }
 
-    saveProjects(projects)
+  saveProjects(projects);
 
-    return taskFromStorage.done
-}
+  return taskFromStorage.done;
+};
 
 const toggleDoneInDom = (obj, status) => {
-    const alterDivs = obj.task.querySelector('.task-alter-div');
-    // console.log(alterDivs);
-    alterDivs.innerHTML = getAlterDiv(status)
-}
+  const alterDivs = obj.task.querySelector('.task-alter-div');
+  // console.log(alterDivs);
+  alterDivs.innerHTML = getAlterDiv(status);
+};
 
-const checkTask = obj => {
-    const projectStatus = toggleDoneStatus(obj)
-    toggleDoneInDom(obj, projectStatus)
-}
+const checkTask = (obj) => {
+  const projectStatus = toggleDoneStatus(obj);
+  toggleDoneInDom(obj, projectStatus);
+};
 
 export {
-  createNewTask, taskHtml, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm, checkTask
+  createNewTask, taskHtml, displayTasks, updateHeader,
+  deleteTask, editTask, loadTaskOnEditForm, checkTask,
 };

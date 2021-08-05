@@ -9,7 +9,7 @@ import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
 import * as domActions from './utils/domActions';
 import {
-  createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm, checkTask
+  createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm, checkTask,
 } from './components/appCompontents/factories/task';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -66,11 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
       loadTaskOnEditForm({ task, project });
     }
 
-    if (e.target && e.target.classList.contains('done-check')){
-        const task = e.target.closest('.task');
-        const project = document.querySelector('#project-title').textContent;
-       
-        checkTask({task, project})
+    if (e.target && e.target.classList.contains('done-check')) {
+      const task = e.target.closest('.task');
+      const project = document.querySelector('#project-title').textContent;
+
+      checkTask({ task, project });
     }
   });
 

@@ -5,7 +5,7 @@
 
 > Home page
 > 
-![](https://user-images.githubusercontent.com/38987207/127752371-237d19a8-2593-4cf5-a91d-53af947b1ce1.png)
+![](https://user-images.githubusercontent.com/38987207/128410356-621b676b-b49f-40e3-8df1-ff50e937e82b.png)
 
 > App Page
 > 

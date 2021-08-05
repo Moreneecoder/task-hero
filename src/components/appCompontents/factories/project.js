@@ -18,10 +18,6 @@ const getProjects = () => {
           },
         ],
       },
-      {
-        name: 'Study',
-        todos: [],
-      },
     ];
 
     saveProjects(projects);

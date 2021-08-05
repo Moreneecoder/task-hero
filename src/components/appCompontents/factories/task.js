@@ -174,7 +174,6 @@ const toggleDoneStatus = (obj) => {
 
 const toggleDoneInDom = (obj, status) => {
   const alterDivs = obj.task.querySelector('.task-alter-div');
-  // console.log(alterDivs);
   alterDivs.innerHTML = getAlterDiv(status);
 };
 

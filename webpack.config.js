@@ -15,11 +15,6 @@ module.exports = {
       template: './src/index.html',
       title: 'taskHero',
     }),
-    
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery"
-    })
   ],
   output: {
     filename: 'bundle.js',

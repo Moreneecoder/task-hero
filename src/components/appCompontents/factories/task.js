@@ -3,16 +3,28 @@ import {
 } from './project';
 import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
+const getAlterDiv = (status) => {
+    if (status) {
+        return `<div class='alert alert-info p-1'>Done</div>`
+    }
+    else{
+        return `
+            <button class="btn btn-warning text-white edit-btn" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
+            <button class="btn btn-danger delete-btn">Delete</button>`
+    }
+}
+
+
+
 const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">
-                <input type="checkbox" name="" class="done-check" id="">
+                <input type="checkbox" name="" class="done-check" id="" ${checkBox(todo.done)}>
                 <p class="m-0">${todo.title}</p>
                 <p class="m-0">${todo.dueDate}</p>
                 <p class="m-0 text-primary">${todo.priority}</p>
 
-                <div class="ml-auto">                    
-                    <button class="btn btn-warning text-white edit-btn" data-bs-toggle="modal" data-bs-target=".editModal">Edit</button>
-                    <button class="btn btn-danger delete-btn">Delete</button>
+                <div class="ml-auto task-alter-div">                    
+                    ${getAlterDiv(todo.done)}
                 </div>
                 </div>
              </div>`;
@@ -150,11 +162,19 @@ const toggleDoneStatus = obj => {
     }
 
     saveProjects(projects)
+
+    return taskFromStorage.done
+}
+
+const toggleDoneInDom = (obj, status) => {
+    const alterDivs = obj.task.querySelector('.task-alter-div');
+    // console.log(alterDivs);
+    alterDivs.innerHTML = getAlterDiv(status)
 }
 
 const checkTask = obj => {
-    toggleDoneStatus(obj)
-    updateDoneInDom(obj)
+    const projectStatus = toggleDoneStatus(obj)
+    toggleDoneInDom(obj, projectStatus)
 }
 
 export {

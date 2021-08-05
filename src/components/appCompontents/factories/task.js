@@ -14,7 +14,11 @@ const getAlterDiv = (status) => {
     }
 }
 
-
+const checkBox = status => {
+    if (status){        
+        return 'checked'
+    }
+}
 
 const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2">
                 <div class="col-12 border-top border-bottom p-2 d-flex align-items-center justify-content-between">

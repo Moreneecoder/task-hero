@@ -38,7 +38,6 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 </div>
              </div>`;
 
-const projectList = getProjects();
 
 const storeTask = (task, projects) => {
   projects.forEach((project) => {
@@ -51,7 +50,7 @@ const storeTask = (task, projects) => {
   saveProjects(projects);
 };
 
-const getProjectIndex = (projectName, projects = projectList) => {
+const getProjectIndex = (projectName, projects = getProjects()) => {
   const index = projects.findIndex((proj) => proj.name.toLowerCase() === projectName.toLowerCase());
   return index;
 };
@@ -70,7 +69,7 @@ const updateHeader = (projectName, projects = getProjects()) => {
   header.textContent = projects[projectIdx].name;
 };
 
-const createNewTask = (taskObj, projects = projectList) => {
+const createNewTask = (taskObj, projects = getProjects()) => {
   if (projectExists(taskObj, projects)) {
     storeTask(taskObj, projects);
   } else {

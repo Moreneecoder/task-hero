@@ -7,9 +7,123 @@
     <title>Task Hero</title>
 <script defer src="bundle.js"></script></head>
 <body>
-      <main id="content" class="mt-5 pt-5">
+      <main id="content" class="mt-5 py-5">
                 
       </main>
+
+      <div class="modal" id="new-task-modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">New Task</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <form id="new-task-form">
+                    <div class="mb-3">
+                      <label for="title" class="form-label">Task Title</label>
+                      <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp" required>                      
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="desc" class="form-label">Description</label>
+                      <textarea name="desc" class="form-control" id="desc" cols="30" rows="5"></textarea>                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Due Date</label>
+                        <input type="date" name="date" class="form-control" id="date" aria-describedby="dateHelp" required>                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Priority</label>
+
+                        <select name="priority" id="priority" class="form-control" aria-describedby="priorityHelp" required>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <div id="priorityHelp" class="form-text">Tasks will be colored according to priority. Red for high. Blue for medium. Green for low.</div>
+                    </div>
+
+                    <div class="mb-3" id="projects-label">
+                        <label for="date" class="form-label">Project</label>
+
+                        <select name="project" id="project" class="form-control" aria-describedby="projectHelp" required>
+                                                       
+                        </select>                        
+                    </div>
+
+                    <div class="mb-3">
+                        <div id="newProjectHelp" class="form-text">If you want to sort this task into an entirely new project folder, you can easily do so here.</div>
+                        <div class="d-flex justify-content-between">
+                            <input type="text" name="new-proj" class="form-control me-2" id="new-proj" aria-describedby="newProjectHelpHelp" placeholder="Create New Project">
+                            <button type="button" id="new-proj-btn" class="btn btn-primary ml-1">Create</button>
+                        </div>                        
+                    </div>
+                    
+                    <button type="submit" class="btn btn-success">Add</button>
+                </form>
+                
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="modal editModal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              
+                <form id="edit-task-form">
+
+                    <div class="mb-3">
+                        <label for="edit-project" class="form-label">Project</label>
+                        <input type="text" name="project" class="form-control" id="edit-project" readonly required>                      
+                      </div>
+
+                      <input type="number" name="id" id="task-id" hidden>
+
+                    <div class="mb-3">
+                      <label for="edit-title" class="form-label">Task Title</label>
+                      <input type="text" name="title" class="form-control" id="edit-title" required>                      
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="edit-desc" class="form-label">Description</label>
+                      <textarea name="desc" class="form-control" id="edit-desc" cols="30" rows="5"></textarea>                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="edit-date" class="form-label">Due Date</label>
+                        <input type="date" name="date" class="form-control" id="edit-date" required>                      
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="date" class="form-label">Priority</label>
+
+                        <select name="priority" id="edit-priority" class="form-control" aria-describedby="editPriorityHelp" required>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                        <div id="editPriorityHelp" class="form-text">Tasks will be colored according to priority. Red for high. Blue for medium. Green for low.</div>
+                    </div>                    
+                    
+                    <button type="submit" class="btn btn-success">Save</button>
+                </form>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
 
 </body>
 </html>

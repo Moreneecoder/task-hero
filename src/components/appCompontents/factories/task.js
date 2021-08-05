@@ -38,7 +38,6 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 </div>
              </div>`;
 
-
 const storeTask = (task, projects) => {
   projects.forEach((project) => {
     if (project.name.toLowerCase() === task.project.toLowerCase()) {

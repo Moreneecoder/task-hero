@@ -10,10 +10,10 @@ const homeComponent = () => {
     <div class="row container mx-auto align-items-end">
           <div class="col-md-6 col-lg-4">
               <img src="${taskImg}" class="img-fluid" alt="">
-              <div class="alert alert-success text-center p-2 mt-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere in eos corrupti ea ducimus vel doloribus 
-                voluptatem, ullam officiis animi voluptatibus excepturi molestiae esse aperiam quasi numquam amet, 
-                repellendus maxime.
+              <div class="alert alert-success text-center p-2 mt-1">                
+                TaskHero let's you easily manage your tasks. You can add tasks and edit tasks as you see fit. You can 
+                also sort similar tasks into named projects. Mark each project as done when you've completed them and
+                you can unmark by the click of a button. &#128526;
               </div>
           </div>
 
@@ -24,9 +24,9 @@ const homeComponent = () => {
           <div class="col-md-6 col-lg-4">
               <img src="${taskImg2}" class="img-fluid" alt="">
               <div class="alert alert-success text-center p-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere in eos corrupti ea ducimus vel doloribus 
-                voluptatem, ullam officiis animi voluptatibus excepturi molestiae esse aperiam quasi numquam amet, 
-                repellendus mblaxime.
+                How it was built? TaskHero is built entirely with Javascript. but it uses the Webpack javascript
+                bundler to make the app blazing fast. Data persistence is done with the localStorage API. And the
+                UI is built with Bootstrap! &#128525; &#128170;&#127998;
               </div>
           </div>
     </div>

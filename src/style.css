@@ -1,0 +1,13 @@
+.project-list {
+  list-style: none;
+}
+
+.active-project {
+  background-color: #22790c;
+  color: white;
+  padding: 5px;
+}
+
+.cursor {
+  cursor: pointer;
+}

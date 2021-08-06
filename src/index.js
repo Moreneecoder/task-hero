@@ -7,6 +7,7 @@ import navComponent from './components/nav';
 import footerComponent from './components/footer';
 import homeComponent from './components/home';
 import appComponent from './components/appCompontents/app';
+import creditComponent from './components/credit';
 import * as domActions from './utils/domActions';
 import {
   createNewTask, displayTasks, updateHeader, deleteTask, editTask, loadTaskOnEditForm, checkTask,
@@ -21,13 +22,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.id === 'app') {
-      domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'contact-wrapper']);
+      domActions.removeChildWithinParent(mainContent, ['home-wrapper', 'credit-wrapper']);
       domActions.addTabContent(mainContent, 'app-wrapper', appComponent());
     }
 
     if (e.target && e.target.id === 'home') {
-      domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'contact-wrapper']);
+      domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'credit-wrapper']);
       domActions.addTabContent(mainContent, 'home-wrapper', homeComponent());
+    }
+
+    if (e.target && e.target.id === 'credit') {
+      domActions.removeChildWithinParent(mainContent, ['app-wrapper', 'home-wrapper']);
+      domActions.addTabContent(mainContent, 'credit-wrapper', creditComponent());
     }
 
     if (e.target && e.target.classList.contains('projects')) {

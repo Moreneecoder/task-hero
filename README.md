@@ -5,11 +5,15 @@
 
 > Home page
 > 
-![](https://user-images.githubusercontent.com/38987207/128410356-621b676b-b49f-40e3-8df1-ff50e937e82b.png)
+![](https://user-images.githubusercontent.com/38987207/128576376-1088860d-1a50-43a4-b100-5e2686753805.png)
 
 > App Page
 > 
 ![](https://user-images.githubusercontent.com/38987207/128414953-a4845113-c5de-40a7-a99b-f24560e4e93b.png)
+
+> Credit Page
+>
+![](https://user-images.githubusercontent.com/38987207/128576476-bb8e4313-84cf-4a1c-b3ed-d266bca6c552.png)
 
 ## Built With
 * HTML5

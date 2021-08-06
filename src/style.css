@@ -11,3 +11,11 @@
 .cursor {
   cursor: pointer;
 }
+
+.emoji-face {
+  font-size: 100px;
+}
+
+.social-icon {
+  font-size: 36px;
+}

@@ -13,7 +13,7 @@ const navComponent = () => {
           <a class="nav-link text-white" id="app" href="#">App</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white" href="#" tabindex="-1">Credit</a>
+          <a class="nav-link text-white" href="#" id="credit" tabindex="-1">Credit</a>
         </li>        
         
       </ul>

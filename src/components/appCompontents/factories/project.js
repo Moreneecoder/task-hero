@@ -1,9 +1,9 @@
-const saveProjects = (projects) => {
-  localStorage.setItem('projects', JSON.stringify(projects));
+const saveProjects = (projects, storageName = 'projects') => {
+  localStorage.setItem(storageName, JSON.stringify(projects));
 };
 
-const getProjects = () => {
-  if (!localStorage.getItem('projects')) {
+const getProjects = (storageName = 'projects') => {
+  if (!localStorage.getItem(storageName)) {
     const projects = [
       {
         name: 'Welcome',
@@ -23,7 +23,7 @@ const getProjects = () => {
     saveProjects(projects);
   }
 
-  return JSON.parse(localStorage.getItem('projects'));
+  return JSON.parse(localStorage.getItem(storageName));
 };
 
 const projectExists = (task, prjs) => {

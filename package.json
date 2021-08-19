@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/Moreneecoder/task-hero#readme",
   "devDependencies": {
+    "@babel/core": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
     "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
     "eslint": "^7.31.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -33,7 +36,7 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.20.1",
-    "webpack": "^5.47.0",
+    "webpack": "^5.51.1",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },

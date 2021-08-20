@@ -1,26 +1,34 @@
+const storageName = (name = 'projects') => {
+  return name
+}
+
 const saveProjects = (projects, storageName = 'projects') => {
   localStorage.setItem(storageName, JSON.stringify(projects));
 };
 
+const saveDefaultProject = () => {
+  const projects = [
+    {
+      name: 'Welcome',
+      todos: [
+        {
+          id: 0,
+          title: 'Start Here',
+          desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
+          dueDate: '2021-08-05',
+          priority: 'Low',
+          done: false,
+        },
+      ],
+    },
+  ];
+
+  saveProjects(projects);
+}
+
 const getProjects = (storageName = 'projects') => {
   if (!localStorage.getItem(storageName)) {
-    const projects = [
-      {
-        name: 'Welcome',
-        todos: [
-          {
-            id: 0,
-            title: 'Start Here',
-            desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
-            dueDate: '2021-08-05',
-            priority: 'Low',
-            done: false,
-          },
-        ],
-      },
-    ];
-
-    saveProjects(projects);
+    saveDefaultProject()
   }
 
   return JSON.parse(localStorage.getItem(storageName));

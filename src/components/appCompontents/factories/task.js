@@ -84,7 +84,7 @@ const createNewTask = (taskObj, projects = getProjects()) => {
   makeActive(currentProject);
 };
 
-const reassginTaskIds = (tasks) => {
+const reassignTaskIds = (tasks) => {
   let count = 0;
   tasks.forEach((task) => {
     task.id = count;
@@ -99,7 +99,7 @@ const removeTaskFromStorage = (obj) => {
   const tasks = projects[index].todos;
   tasks.splice(taskId, 1);
 
-  reassginTaskIds(tasks);
+  reassignTaskIds(tasks);
   saveProjects(projects);
 };
 
@@ -185,4 +185,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
+  reassignTaskIds
 };

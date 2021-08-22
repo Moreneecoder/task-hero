@@ -193,5 +193,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
-  reassignTaskIds, taskFactory, storeTask
+  reassignTaskIds, taskFactory, storeTask,
 };

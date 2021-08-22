@@ -3,6 +3,10 @@ import {
 } from './project';
 import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
+const taskFactory = ({title, desc, dueDate, priority, project, done}) => ({
+  title, desc, dueDate, priority, project, done
+});
+
 const getAlterDiv = (status) => {
   let output;
   if (status) {
@@ -68,7 +72,10 @@ const updateHeader = (projectName, projects = getProjects()) => {
   header.textContent = projects[projectIdx].name;
 };
 
-const createNewTask = (taskObj, projects = getProjects()) => {
+const createNewTask = (task, projects = getProjects()) => {
+  // create task with factory
+  let taskObj = taskFactory(task)
+
   if (projectExists(taskObj, projects)) {
     storeTask(taskObj, projects);
   } else {

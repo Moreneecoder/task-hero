@@ -1,5 +1,3 @@
-const storageName = (name = 'projects') => name;
-
 const saveProjects = (projects, storageName = 'projects') => {
   localStorage.setItem(storageName, JSON.stringify(projects));
 };
@@ -41,16 +39,17 @@ const projectExists = (task, prjs) => {
   return false;
 };
 
-const create = (project, projects = getProjects()) => {
+const create = (project, myGetProjects, mySaveFunction) => {
+  let projects = myGetProjects()
   projects.push(project);
-  saveProjects(projects);
+  mySaveFunction(projects);
 };
 
 const Project = (Name) => {
   const name = Name;
   const todos = [];
 
-  create({ name, todos });
+  create({ name, todos }, getProjects, saveProjects);
   return { name, todos };
 };
 
@@ -61,5 +60,5 @@ const addToProjectsMenu = (projectName) => {
 };
 
 export {
-  getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu, create
 };

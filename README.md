@@ -37,6 +37,14 @@ To setup a local version of this project on your machine, follow the short simpl
 * Navigate to the project's directory using the cd command.
 * Run `npm start`. This will compile the project and open it up in your browser
 
+To build/compile your javascript modules into a single source file with webpack:
+* Run `npm run build`
+
+### Tests
+This project uses `Jest` for its unit testing. To run tests:
+* Navigate to the project's root directory.
+* Run `npm run test`. This will run your code against the project test suites.
+
 ## Authors
 
 👤 **Bello Morenikeji Fuad**

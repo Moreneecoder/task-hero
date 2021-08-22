@@ -3,6 +3,12 @@ import {
 } from './project';
 import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
+const taskFactory = ({
+  title, desc, dueDate, priority, project, done,
+}) => ({
+  title, desc, dueDate, priority, project, done,
+});
+
 const getAlterDiv = (status) => {
   let output;
   if (status) {
@@ -38,7 +44,7 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 </div>
              </div>`;
 
-const storeTask = (task, projects) => {
+const storeTask = (task, projects, mySaveFunction) => {
   projects.forEach((project) => {
     if (project.name.toLowerCase() === task.project.toLowerCase()) {
       task.id = project.todos.length;
@@ -46,7 +52,7 @@ const storeTask = (task, projects) => {
     }
   });
 
-  saveProjects(projects);
+  mySaveFunction(projects);
 };
 
 const getProjectIndex = (projectName, projects = getProjects()) => {
@@ -68,12 +74,14 @@ const updateHeader = (projectName, projects = getProjects()) => {
   header.textContent = projects[projectIdx].name;
 };
 
-const createNewTask = (taskObj, projects = getProjects()) => {
+const createNewTask = (task, projects = getProjects()) => {
+  const taskObj = taskFactory(task);
+
   if (projectExists(taskObj, projects)) {
-    storeTask(taskObj, projects);
+    storeTask(taskObj, projects, saveProjects);
   } else {
     Project(taskObj.project);
-    storeTask(taskObj, getProjects());
+    storeTask(taskObj, getProjects(), saveProjects);
     addToProjectsMenu(taskObj.project);
   }
 
@@ -84,7 +92,7 @@ const createNewTask = (taskObj, projects = getProjects()) => {
   makeActive(currentProject);
 };
 
-const reassginTaskIds = (tasks) => {
+const reassignTaskIds = (tasks) => {
   let count = 0;
   tasks.forEach((task) => {
     task.id = count;
@@ -99,7 +107,7 @@ const removeTaskFromStorage = (obj) => {
   const tasks = projects[index].todos;
   tasks.splice(taskId, 1);
 
-  reassginTaskIds(tasks);
+  reassignTaskIds(tasks);
   saveProjects(projects);
 };
 
@@ -185,4 +193,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
+  reassignTaskIds, taskFactory, storeTask,
 };

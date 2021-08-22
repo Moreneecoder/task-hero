@@ -1,29 +1,33 @@
-const saveProjects = (projects) => {
-  localStorage.setItem('projects', JSON.stringify(projects));
+const saveProjects = (projects, storageName = 'projects') => {
+  localStorage.setItem(storageName, JSON.stringify(projects));
 };
 
-const getProjects = () => {
-  if (!localStorage.getItem('projects')) {
-    const projects = [
-      {
-        name: 'Welcome',
-        todos: [
-          {
-            id: 0,
-            title: 'Start Here',
-            desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
-            dueDate: '2021-08-05',
-            priority: 'Low',
-            done: false,
-          },
-        ],
-      },
-    ];
+const saveDefaultProject = () => {
+  const projects = [
+    {
+      name: 'Welcome',
+      todos: [
+        {
+          id: 0,
+          title: 'Start Here',
+          desc: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni culpa veniam non rem eos illo temporibus architecto quas, voluptatibus facere!',
+          dueDate: '2021-08-05',
+          priority: 'Low',
+          done: false,
+        },
+      ],
+    },
+  ];
 
-    saveProjects(projects);
+  saveProjects(projects);
+};
+
+const getProjects = (storageName = 'projects') => {
+  if (!localStorage.getItem(storageName)) {
+    saveDefaultProject();
   }
 
-  return JSON.parse(localStorage.getItem('projects'));
+  return JSON.parse(localStorage.getItem(storageName));
 };
 
 const projectExists = (task, prjs) => {
@@ -35,16 +39,17 @@ const projectExists = (task, prjs) => {
   return false;
 };
 
-const create = (project, projects = getProjects()) => {
+const create = (project, myGetProjects, mySaveFunction) => {
+  const projects = myGetProjects();
   projects.push(project);
-  saveProjects(projects);
+  mySaveFunction(projects);
 };
 
 const Project = (Name) => {
   const name = Name;
   const todos = [];
 
-  create({ name, todos });
+  create({ name, todos }, getProjects, saveProjects);
   return { name, todos };
 };
 
@@ -55,5 +60,5 @@ const addToProjectsMenu = (projectName) => {
 };
 
 export {
-  getProjects, projectExists, saveProjects, Project, addToProjectsMenu,
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu, create,
 };

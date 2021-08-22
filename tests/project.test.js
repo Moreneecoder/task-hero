@@ -1,4 +1,4 @@
-import { create } from '../src/components/appCompontents/factories/project';
+import { create, projectExists } from '../src/components/appCompontents/factories/project';
 
 let projects = [
     {
@@ -25,6 +25,15 @@ let projects = [
     },
   ];
 
+  const task = {
+    title: 'Do something',
+    desc: 'Lorem is a goat',
+    dueDate: '2021-08-27',
+    priority: 'medium',
+    project: 'Deeds',
+    done: false,
+  };
+
   const getProjects = () => projects;
   const saveProjects = (newProj) => projects = newProj
 
@@ -37,5 +46,23 @@ describe('#create', () => {
         const lastProject = projects[projects.length - 1]; 
         expect(lastProject).toEqual({ name, todos });
     })
+})
+
+describe('#projectExists', () => {
+  it('returns a boolean', () => {
+      const status = projectExists(task, getProjects())
+      expect(typeof status).toBe('boolean')
+  })
+
+  it('returns false if project name does not exists', () => {
+    const status = projectExists(task, getProjects())
+    expect(status).toBe(false)
+  })
+
+  it('returns true if project name exists', () => {
+    task.project = 'Intro';
+    const status = projectExists(task, getProjects())
+    expect(status).toBe(true)
+  })
 })
 

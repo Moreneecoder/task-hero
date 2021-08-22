@@ -1,3 +1,3 @@
-import {saveProjects, storageName} from '../src/components/appCompontents/factories/project'
+import { saveProjects, storageName } from '../src/components/appCompontents/factories/project';
 
-it.todo('makes the world go round')
+it.todo('makes the world go round');

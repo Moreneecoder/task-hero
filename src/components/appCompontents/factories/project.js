@@ -1,6 +1,4 @@
-const storageName = (name = 'projects') => {
-  return name
-}
+const storageName = (name = 'projects') => name;
 
 const saveProjects = (projects, storageName = 'projects') => {
   localStorage.setItem(storageName, JSON.stringify(projects));
@@ -24,11 +22,11 @@ const saveDefaultProject = () => {
   ];
 
   saveProjects(projects);
-}
+};
 
 const getProjects = (storageName = 'projects') => {
   if (!localStorage.getItem(storageName)) {
-    saveDefaultProject()
+    saveDefaultProject();
   }
 
   return JSON.parse(localStorage.getItem(storageName));

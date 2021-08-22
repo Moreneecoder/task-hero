@@ -3,8 +3,10 @@ import {
 } from './project';
 import { loadAsHtml, makeActive, removeFromDom } from '../../../utils/domActions';
 
-const taskFactory = ({title, desc, dueDate, priority, project, done}) => ({
-  title, desc, dueDate, priority, project, done
+const taskFactory = ({
+  title, desc, dueDate, priority, project, done,
+}) => ({
+  title, desc, dueDate, priority, project, done,
 });
 
 const getAlterDiv = (status) => {
@@ -73,7 +75,7 @@ const updateHeader = (projectName, projects = getProjects()) => {
 };
 
 const createNewTask = (task, projects = getProjects()) => {
-  let taskObj = taskFactory(task)
+  const taskObj = taskFactory(task);
 
   if (projectExists(taskObj, projects)) {
     storeTask(taskObj, projects);
@@ -191,5 +193,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
-  reassignTaskIds, taskFactory
+  reassignTaskIds, taskFactory,
 };

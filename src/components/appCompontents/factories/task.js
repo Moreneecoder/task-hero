@@ -73,7 +73,6 @@ const updateHeader = (projectName, projects = getProjects()) => {
 };
 
 const createNewTask = (task, projects = getProjects()) => {
-  // create task with factory
   let taskObj = taskFactory(task)
 
   if (projectExists(taskObj, projects)) {
@@ -192,5 +191,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
-  reassignTaskIds
+  reassignTaskIds, taskFactory
 };

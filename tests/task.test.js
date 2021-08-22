@@ -1,6 +1,6 @@
-import { reassignTaskIds, taskFactory } from '../src/components/appCompontents/factories/task';
+import { reassignTaskIds, taskFactory, storeTask } from '../src/components/appCompontents/factories/task';
 
-const projects = [
+let projects = [
   {
     name: 'Intro',
     todos: [
@@ -25,16 +25,28 @@ const projects = [
   },
 ];
 
-describe('#taskFactory', () => {
-  const task = taskFactory({
+const task = taskFactory({
     title: 'Do something',
     desc: 'Lorem is a goat',
     dueDate: '2021-08-27',
     priority: 'medium',
     project: 'Deeds',
     done: false,
-  });
+});
 
+const task1 = taskFactory({
+    title: 'Do nothing',
+    desc: 'Lorem is a cow',
+    dueDate: '2021-08-27',
+    priority: 'medium',
+    project: 'Intro',
+    done: false,
+});
+
+const getProjects = () => projects;
+const saveProjects = (newProj) => { projects = newProj; };
+
+describe('#taskFactory', () => {
   it('expects the correct passed in string title', () => {
     expect(task.title).toBe('Do something');
     expect(typeof task.title).toBe('string');
@@ -91,3 +103,13 @@ describe('#reassignTask', () => {
     expect(projects[0].todos).toEqual(taskSorted);
   });
 });
+
+describe('#storeTask', () => {
+    it('saves a new task in projects if provided project name exists', () => {
+        storeTask(task1, getProjects(), saveProjects)
+        
+        const projectTasks = getProjects()[0].todos;
+        const lastTaskInProject = projectTasks[projectTasks.length - 1]
+        expect(lastTaskInProject).toEqual(task1)
+    })
+})

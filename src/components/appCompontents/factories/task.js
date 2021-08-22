@@ -44,7 +44,7 @@ const taskHtml = (todo) => `<div data-id="${todo.id}" class="row task mt-3 mx-2"
                 </div>
              </div>`;
 
-const storeTask = (task, projects) => {
+const storeTask = (task, projects, mySaveFunction) => {
   projects.forEach((project) => {
     if (project.name.toLowerCase() === task.project.toLowerCase()) {
       task.id = project.todos.length;
@@ -52,7 +52,7 @@ const storeTask = (task, projects) => {
     }
   });
 
-  saveProjects(projects);
+  mySaveFunction(projects);
 };
 
 const getProjectIndex = (projectName, projects = getProjects()) => {
@@ -78,10 +78,10 @@ const createNewTask = (task, projects = getProjects()) => {
   const taskObj = taskFactory(task);
 
   if (projectExists(taskObj, projects)) {
-    storeTask(taskObj, projects);
+    storeTask(taskObj, projects, saveProjects);
   } else {
     Project(taskObj.project);
-    storeTask(taskObj, getProjects());
+    storeTask(taskObj, getProjects(), saveProjects);
     addToProjectsMenu(taskObj.project);
   }
 
@@ -193,5 +193,5 @@ const checkTask = (obj) => {
 export {
   createNewTask, taskHtml, displayTasks, updateHeader,
   deleteTask, editTask, loadTaskOnEditForm, checkTask,
-  reassignTaskIds, taskFactory,
+  reassignTaskIds, taskFactory, storeTask
 };

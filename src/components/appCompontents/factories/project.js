@@ -40,7 +40,7 @@ const projectExists = (task, prjs) => {
 };
 
 const create = (project, myGetProjects, mySaveFunction) => {
-  let projects = myGetProjects()
+  const projects = myGetProjects();
   projects.push(project);
   mySaveFunction(projects);
 };
@@ -60,5 +60,5 @@ const addToProjectsMenu = (projectName) => {
 };
 
 export {
-  getProjects, projectExists, saveProjects, Project, addToProjectsMenu, create
+  getProjects, projectExists, saveProjects, Project, addToProjectsMenu, create,
 };
